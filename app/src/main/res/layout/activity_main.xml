@@ -15,50 +15,73 @@
         android:background="#ffffff"
         android:orientation="horizontal">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:orientation="vertical">
 
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:text="Input gates"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/addAndGateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#424242"
+                    android:drawableTop="@drawable/logic_gate_and"
+                    android:text="And" />
+
+                <Button
+                    android:id="@+id/addOrGateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#273AFF"
+                    android:drawableTop="@drawable/logic_gate_or"
+                    android:text="Or" />
+
+                <Button
+                    android:id="@+id/addNotGateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#AB0000"
+                    android:drawableTop="@drawable/logic_gate_not"
+                    android:text="Not" />
+
+                <Button
+                    android:id="@+id/addNandGateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D8D800"
+                    android:drawableTop="@drawable/logic_gate_nand"
+                    android:text="Nand" />
+
+                <Button
+                    android:id="@+id/addNorGateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#27D800"
+                    android:drawableTop="@drawable/logic_gate_nor"
+                    android:text="Nor" />
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                android:text="Input gates"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/addAndGateBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="And" />
-
-            <Button
-                android:id="@+id/addOrGateBtn"
+                android:layout_height="wrap_content"></TextView>
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Or" />
+                android:layout_height="wrap_content"></TextView>
 
-            <Button
-                android:id="@+id/addNotGateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not" />
-
-            <Button
-                android:id="@+id/addNandGateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nand" />
-
-            <Button
-                android:id="@+id/addNorGateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nor" />
         </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
