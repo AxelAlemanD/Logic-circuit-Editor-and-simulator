@@ -54,8 +54,8 @@ public class NandGate extends Figure {
          *                |
          *                |----
          */
-        path.lineTo(this.x+115, this.y+50);
-        path.lineTo(this.x+115, this.y+55);
+        path.lineTo(this.x+120, this.y+50);
+        path.lineTo(this.x+120, this.y+55);
         path.lineTo(this.x+50, this.y+55);
 
         /**
@@ -129,6 +129,8 @@ public class NandGate extends Figure {
         path.cubicTo(this.x+75, this.y,
                 this.x+125, this.y+65,
                 this.x+50,this.y+100);
+
+        path.addCircle(this.x+95, this.y+52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
     }
