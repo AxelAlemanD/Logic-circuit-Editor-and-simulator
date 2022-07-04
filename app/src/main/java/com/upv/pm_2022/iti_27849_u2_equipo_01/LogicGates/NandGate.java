@@ -16,10 +16,10 @@ public class NandGate extends Figure {
         this.id = id;
         this.x = x;
         this.y = y;
-        this.ancho = 200;
+        this.ancho = 100;
         this.alto = 100;
         paint.setAntiAlias(true);
-        paint.setColor(Color.YELLOW);
+        paint.setColor(Color.GRAY);
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(2.5f);
     }

@@ -16,7 +16,7 @@ public class NorGate extends Figure {
         this.id = id;
         this.x = x;
         this.y = y;
-        this.ancho = 200;
+        this.ancho = 100;
         this.alto = 100;
         paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
