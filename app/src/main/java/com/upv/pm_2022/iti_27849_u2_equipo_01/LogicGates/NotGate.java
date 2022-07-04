@@ -21,6 +21,7 @@ public class NotGate extends Figure {
         paint.setAntiAlias(true);
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
+//        paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2.5f);
     }
 
@@ -35,100 +36,30 @@ public class NotGate extends Figure {
          */
         path.moveTo(this.x, this.y);
 
-        /**
-         *  ---------------
-         */
-        path.lineTo(this.x+50, this.y);
-
-        /**
-         *
-         *  ---------------
-         *                |
-         *                |
-         */
+        // Diagonal
         path.lineTo(this.x+50, this.y+50);
-
-        /**
-         *
-         *  ---------------
-         *                |
-         *                |----
-         */
-        path.lineTo(this.x+115, this.y+50);
-        path.lineTo(this.x+115, this.y+55);
+        // Linea Salida
+        path.lineTo(this.x+80, this.y+50);
+        path.lineTo(this.x+80, this.y+55);
         path.lineTo(this.x+50, this.y+55);
-
-        /**
-         * ---------------
-         *                |
-         *                |----
-         *                |
-         */
-        path.lineTo(this.x+50, this.y+100);
-
-        /**
-         * ----------------
-         *                |
-         *                |----
-         *                |
-         *  ---------------
-         */
+        // Diagonal inferior
         path.lineTo(this.x, this.y+100);
 
-        /**
-         * ----------------
-         *                |
-         *                |----
-         *  |             |
-         *  ---------------
-         */
+        // Linea entrada inferior
         path.lineTo(this.x, this.y+75);
-
-        /**
-         *     ----------------
-         *                    |
-         *                    |----
-         *  ----|             |
-         *      ---------------
-         */
         path.lineTo(this.x-30, this.y+75);
         path.lineTo(this.x-30, this.y+80);
         path.lineTo(this.x, this.y+80);
 
-        /**
-         *     ----------------
-         *                    |
-         *      |             |----
-         *  ----|             |
-         *      ---------------
-         */
+        // Linea entrada superior
         path.lineTo(this.x, this.y+25);
-
-        /**
-         *     ----------------
-         *  ----|             |
-         *      |             |----
-         *  ----|             |
-         *      ---------------
-         */
         path.lineTo(this.x-30, this.y+25);
         path.lineTo(this.x-30, this.y+30);
         path.lineTo(this.x, this.y+30);
 
-        /**
-         *      ---------------
-         *  ----|             |
-         *      |             |----
-         *  ----|             |
-         *      ---------------
-         */
         path.lineTo(this.x, this.y);
 
-        path.moveTo(this.x+50, this.y);
-        // Draw curve
-        path.cubicTo(this.x+75, this.y,
-                this.x+125, this.y+65,
-                this.x+50,this.y+100);
+        path.addCircle(this.x+55, this.y+52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
     }
