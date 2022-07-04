@@ -19,7 +19,7 @@ public class NandGate extends Figure {
         this.ancho = 200;
         this.alto = 100;
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.YELLOW);
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(2.5f);
     }
