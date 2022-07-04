@@ -15,6 +15,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
 
 public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callback {
@@ -72,6 +75,18 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 				OrGate orGate = (OrGate) figure;
 				orGate.draw(canvas);
 			}
+			else if(figure instanceof NotGate) {
+				NotGate notGate = (NotGate) figure;
+				notGate.draw(canvas);
+			}
+			else if(figure instanceof NandGate) {
+				NandGate nandGate = (NandGate) figure;
+				nandGate.draw(canvas);
+			}
+			else if(figure instanceof NorGate) {
+				NorGate norGate = (NorGate) figure;
+				norGate.draw(canvas);
+			}
 		}
 	}
 	
@@ -89,6 +104,12 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 							figuraActiva = figure.onDown(x, y);
 						else if (figure instanceof OrGate)
 							figuraActiva = figure.onDown(x, y);
+						else if (figure instanceof NotGate)
+							figuraActiva = figure.onDown(x, y);
+						else if (figure instanceof NandGate)
+							figuraActiva = figure.onDown(x, y);
+						else if (figure instanceof NorGate)
+							figuraActiva = figure.onDown(x, y);
 					}
 				}
 				break;
@@ -98,6 +119,12 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 					if(figures.get(figuraActiva) instanceof AndGate)
 						figures.get(figuraActiva).onMove(x, y);
 					else if(figures.get(figuraActiva) instanceof OrGate)
+						figures.get(figuraActiva).onMove(x, y);
+					else if(figures.get(figuraActiva) instanceof NotGate)
+						figures.get(figuraActiva).onMove(x, y);
+					else if(figures.get(figuraActiva) instanceof NandGate)
+						figures.get(figuraActiva).onMove(x, y);
+					else if(figures.get(figuraActiva) instanceof NorGate)
 						figures.get(figuraActiva).onMove(x, y);
 				}
 				break;

@@ -40,6 +40,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Or" />
+
+            <Button
+                android:id="@+id/addNotGateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not" />
+
+            <Button
+                android:id="@+id/addNandGateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nand" />
+
+            <Button
+                android:id="@+id/addNorGateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nor" />
         </LinearLayout>
     </LinearLayout>
 

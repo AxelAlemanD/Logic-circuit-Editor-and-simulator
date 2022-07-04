@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
             addOrGate();
         });
 
+        findViewById(R.id.addNotGateBtn).setOnClickListener( view -> {
+            addNotGate();
+        });
+
+        findViewById(R.id.addNandGateBtn).setOnClickListener( view -> {
+            addNandGate();
+        });
+
+        findViewById(R.id.addNorGateBtn).setOnClickListener( view -> {
+            addNorGate();
+        });
+
         findViewById(R.id.startSimulation).setOnClickListener( view -> {
             Toast.makeText(getApplicationContext(), "Start simulation", Toast.LENGTH_SHORT).show();
         });
@@ -41,8 +56,16 @@ public class MainActivity extends AppCompatActivity {
     public void addAndGate(){
         DragAndDropView.figures.add(new AndGate(id++,400,500));
     }
-
     public void addOrGate(){
         DragAndDropView.figures.add(new OrGate(id++,800,500));
+    }
+    public void addNotGate(){
+        DragAndDropView.figures.add(new NotGate(id++,800,500));
+    }
+    public void addNandGate(){
+        DragAndDropView.figures.add(new NandGate(id++,400,500));
+    }
+    public void addNorGate(){
+        DragAndDropView.figures.add(new NorGate(id++,800,500));
     }
 }
