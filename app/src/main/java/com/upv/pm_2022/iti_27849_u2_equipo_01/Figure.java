@@ -6,12 +6,16 @@
 package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
 public abstract class Figure {
 
 	protected int id;
-	protected int x;
-	protected int y;
+	protected int xAxies;
+	protected int yAxies;
+	protected int weight = 100;
+	protected int height = 100;
+	protected Paint paint;
 
 	public void draw(Canvas canvas){ }
 

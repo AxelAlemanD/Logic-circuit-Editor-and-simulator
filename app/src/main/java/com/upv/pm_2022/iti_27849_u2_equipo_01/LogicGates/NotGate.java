@@ -8,21 +8,16 @@ import android.graphics.Path;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 
 public class NotGate extends Figure {
-    private int ancho;
-    private int alto;
-    private Paint paint = new Paint();
 
     public NotGate(int id, int x, int y) {
         this.id = id;
-        this.x = x;
-        this.y = y;
-        this.ancho = 100;
-        this.alto = 100;
+        this.xAxies = x;
+        this.yAxies = y;
+
+        this.paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
-//        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(2.5f);
     }
 
     /**
@@ -34,32 +29,32 @@ public class NotGate extends Figure {
         /**
          *  -
          */
-        path.moveTo(this.x, this.y);
+        path.moveTo(this.xAxies, this.yAxies);
 
         // Diagonal
-        path.lineTo(this.x+50, this.y+50);
+        path.lineTo(this.xAxies +50, this.yAxies +50);
         // Linea Salida
-        path.lineTo(this.x+80, this.y+50);
-        path.lineTo(this.x+80, this.y+55);
-        path.lineTo(this.x+50, this.y+55);
+        path.lineTo(this.xAxies +80, this.yAxies +50);
+        path.lineTo(this.xAxies +80, this.yAxies +55);
+        path.lineTo(this.xAxies +50, this.yAxies +55);
         // Diagonal inferior
-        path.lineTo(this.x, this.y+100);
+        path.lineTo(this.xAxies, this.yAxies +100);
 
         // Linea entrada inferior
-        path.lineTo(this.x, this.y+75);
-        path.lineTo(this.x-30, this.y+75);
-        path.lineTo(this.x-30, this.y+80);
-        path.lineTo(this.x, this.y+80);
+        path.lineTo(this.xAxies, this.yAxies +75);
+        path.lineTo(this.xAxies -30, this.yAxies +75);
+        path.lineTo(this.xAxies -30, this.yAxies +80);
+        path.lineTo(this.xAxies, this.yAxies +80);
 
         // Linea entrada superior
-        path.lineTo(this.x, this.y+25);
-        path.lineTo(this.x-30, this.y+25);
-        path.lineTo(this.x-30, this.y+30);
-        path.lineTo(this.x, this.y+30);
+        path.lineTo(this.xAxies, this.yAxies +25);
+        path.lineTo(this.xAxies -30, this.yAxies +25);
+        path.lineTo(this.xAxies -30, this.yAxies +30);
+        path.lineTo(this.xAxies, this.yAxies +30);
 
-        path.lineTo(this.x, this.y);
+        path.lineTo(this.xAxies, this.yAxies);
 
-        path.addCircle(this.x+55, this.y+52, 10, Path.Direction.CW);
+        path.addCircle(this.xAxies +55, this.yAxies +52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
     }
@@ -71,8 +66,8 @@ public class NotGate extends Figure {
      * @return id
      */
     public int onDown(int touchX, int touchY){
-        if(touchX > this.x && touchX < this.x+this.ancho &&
-                touchY > this.y && touchY < this.y+this.alto)
+        if(touchX > this.xAxies && touchX < this.xAxies +this.weight &&
+                touchY > this.yAxies && touchY < this.yAxies +this.height)
             return this.id;
         return -1;
     }
@@ -83,8 +78,8 @@ public class NotGate extends Figure {
      * @param touchY position of the tap on the Y axis
      */
     public void onMove(int touchX, int touchY){
-        this.x = touchX - this.ancho/2;
-        this.y = touchY - this.alto/2;
+        this.xAxies = touchX - this.weight /2;
+        this.yAxies = touchY - this.height /2;
     }
 }
 

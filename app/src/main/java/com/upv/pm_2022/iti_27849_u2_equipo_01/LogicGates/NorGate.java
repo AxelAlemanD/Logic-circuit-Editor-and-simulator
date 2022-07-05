@@ -8,20 +8,16 @@ import android.graphics.Path;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 
 public class NorGate extends Figure {
-    private int ancho;
-    private int alto;
-    private Paint paint = new Paint();
 
     public NorGate(int id, int x, int y) {
         this.id = id;
-        this.x = x;
-        this.y = y;
-        this.ancho = 100;
-        this.alto = 100;
+        this.xAxies = x;
+        this.yAxies = y;
+
+        this.paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.FILL);
-        paint.setStrokeWidth(2.5f);
     }
 
     /**
@@ -33,12 +29,12 @@ public class NorGate extends Figure {
         /**
          *  -
          */
-        path.moveTo(this.x, this.y);
+        path.moveTo(this.xAxies, this.yAxies);
 
         /**
          *  ---------------
          */
-        path.lineTo(this.x+50, this.y);
+        path.lineTo(this.xAxies +50, this.yAxies);
 
         /**
          *
@@ -46,7 +42,7 @@ public class NorGate extends Figure {
          *                |
          *                |
          */
-        path.lineTo(this.x+50, this.y+50);
+        path.lineTo(this.xAxies +50, this.yAxies +50);
 
         /**
          *
@@ -54,9 +50,9 @@ public class NorGate extends Figure {
          *                |
          *                |----
          */
-        path.lineTo(this.x+130, this.y+50);
-        path.lineTo(this.x+130, this.y+55);
-        path.lineTo(this.x+50, this.y+55);
+        path.lineTo(this.xAxies +130, this.yAxies +50);
+        path.lineTo(this.xAxies +130, this.yAxies +55);
+        path.lineTo(this.xAxies +50, this.yAxies +55);
 
         /**
          * ---------------
@@ -64,7 +60,7 @@ public class NorGate extends Figure {
          *                |----
          *                |
          */
-        path.lineTo(this.x+50, this.y+100);
+        path.lineTo(this.xAxies +50, this.yAxies +100);
 
         /**
          * ----------------
@@ -73,29 +69,29 @@ public class NorGate extends Figure {
          *                |
          *  ---------------
          */
-        path.lineTo(this.x-30, this.y+100);
+        path.lineTo(this.xAxies -30, this.yAxies +100);
 
 
-        path.lineTo(this.x-30, this.y+95);
+        path.lineTo(this.xAxies -30, this.yAxies +95);
 
-        path.lineTo(this.x, this.y+95);
+        path.lineTo(this.xAxies, this.yAxies +95);
 
-        path.lineTo(this.x+10, this.y+50);
+        path.lineTo(this.xAxies +10, this.yAxies +50);
 
-        path.lineTo(this.x, this.y+5);
+        path.lineTo(this.xAxies, this.yAxies +5);
 
-        path.lineTo(this.x-30, this.y+5);
+        path.lineTo(this.xAxies -30, this.yAxies +5);
 
-        path.lineTo(this.x-30, this.y);
-        path.lineTo(this.x, this.y);
+        path.lineTo(this.xAxies -30, this.yAxies);
+        path.lineTo(this.xAxies, this.yAxies);
 
-        path.moveTo(this.x+50, this.y);
+        path.moveTo(this.xAxies +50, this.yAxies);
         // Draw curve
-        path.cubicTo(this.x+75, this.y,
-                this.x+135, this.y+65,
-                this.x+50,this.y+100);
+        path.cubicTo(this.xAxies +75, this.yAxies,
+                this.xAxies +135, this.yAxies +65,
+                this.xAxies +50,this.yAxies +100);
 
-        path.addCircle(this.x+100, this.y+52, 10, Path.Direction.CW);
+        path.addCircle(this.xAxies +100, this.yAxies +52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
     }
@@ -107,8 +103,8 @@ public class NorGate extends Figure {
      * @return id
      */
     public int onDown(int touchX, int touchY){
-        if(touchX > this.x && touchX < this.x+this.ancho &&
-                touchY > this.y && touchY < this.y+this.alto)
+        if(touchX > this.xAxies && touchX < this.xAxies +this.weight &&
+                touchY > this.yAxies && touchY < this.yAxies +this.height)
             return this.id;
         return -1;
     }
@@ -119,8 +115,8 @@ public class NorGate extends Figure {
      * @param touchY position of the tap on the Y axis
      */
     public void onMove(int touchX, int touchY){
-        this.x = touchX - this.ancho/2;
-        this.y = touchY - this.alto/2;
+        this.xAxies = touchX - this.weight /2;
+        this.yAxies = touchY - this.height /2;
     }
 }
 
