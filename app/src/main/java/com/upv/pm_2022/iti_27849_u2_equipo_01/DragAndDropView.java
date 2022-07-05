@@ -109,6 +109,7 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 							figuraActiva = figure.onDown(x, y);
 					}
 				}
+				System.out.println(figuraActiva);
 				break;
 
 			case MotionEvent.ACTION_MOVE:

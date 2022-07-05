@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 
+import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 public class NotGate extends Figure {
 
@@ -13,6 +15,7 @@ public class NotGate extends Figure {
         this.id = id;
         this.xAxies = x;
         this.yAxies = y;
+        this.weight = 80;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -75,6 +78,11 @@ public class NotGate extends Figure {
     public void onMove(int touchX, int touchY){
         this.xAxies = touchX - this.weight /2;
         this.yAxies = touchY - this.height /2;
+
+        // Update position of the points
+        for(Figure point : DragAndDropView.figures.subList(this.id+1, this.id+3)){
+            ((Point) point).onMoveGate(this.xAxies, this.yAxies+300);
+        }
     }
 }
 

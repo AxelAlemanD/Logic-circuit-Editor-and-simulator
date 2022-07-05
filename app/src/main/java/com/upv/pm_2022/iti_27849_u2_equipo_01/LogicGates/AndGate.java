@@ -155,7 +155,7 @@ public class AndGate extends Figure {
 
         // Update position of the points
         for(Figure point : DragAndDropView.figures.subList(this.id+1, this.id+4)){
-            ((Point) point).onMoveGate(this.xAxies, this.yAxies);
+            ((Point) point).onMoveGate(this.xAxies, this.yAxies-100);
         }
     }
 }

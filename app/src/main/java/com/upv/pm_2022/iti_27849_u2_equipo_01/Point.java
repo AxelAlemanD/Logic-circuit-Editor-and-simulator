@@ -54,7 +54,7 @@ public class Point extends Figure {
      */
     public void onMoveGate(int xAxiesGate, int yAxiesGate){
         this.xAxies = xAxiesGate - this.diffX;
-        this.yAxies = yAxiesGate - (this.diffY + 100);
+        this.yAxies = yAxiesGate - this.diffY;
     }
 
     /**

@@ -46,17 +46,59 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
     }
+
     public void addOrGate(View view){
-        DragAndDropView.figures.add(new OrGate(id++,800,500));
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new OrGate(gateId,800,500));
+
+        Point outputPoint = new Point(gateId,917, 553, 10, id++);
+        Point inputPointA = new Point(gateId,760, 505, 10, id++);
+        Point inputPointB = new Point(gateId,760, 597, 10, id++);
+
+        DragAndDropView.figures.add(outputPoint);
+        DragAndDropView.figures.add(inputPointA);
+        DragAndDropView.figures.add(inputPointB);
     }
+
     public void addNotGate(View view){
-        DragAndDropView.figures.add(new NotGate(id++,800,500));
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new NotGate(gateId,800,500));
+
+        Point outputPoint = new Point(gateId,890, 553, 10, id++);
+        Point inputPointA = new Point(gateId,760, 553, 10, id++);
+
+        DragAndDropView.figures.add(outputPoint);
+        DragAndDropView.figures.add(inputPointA);
     }
+
     public void addNandGate(View view){
-        DragAndDropView.figures.add(new NandGate(id++,400,500));
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new NandGate(gateId,400,500));
+
+        Point outputPoint = new Point(gateId,530, 553, 10, id++);
+        Point inputPointA = new Point(gateId,360, 530, 10, id++);
+        Point inputPointB = new Point(gateId,360, 575, 10, id++);
+
+        DragAndDropView.figures.add(outputPoint);
+        DragAndDropView.figures.add(inputPointA);
+        DragAndDropView.figures.add(inputPointB);
     }
+
     public void addNorGate(View view){
-        DragAndDropView.figures.add(new NorGate(id++,800,500));
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new NorGate(gateId,800,500));
+
+        Point outputPoint = new Point(gateId,930, 553, 10, id++);
+        Point inputPointA = new Point(gateId,760, 505, 10, id++);
+        Point inputPointB = new Point(gateId,760, 597, 10, id++);
+
+        DragAndDropView.figures.add(outputPoint);
+        DragAndDropView.figures.add(inputPointA);
+        DragAndDropView.figures.add(inputPointB);
     }
 
     public void startSimulation(View view){
