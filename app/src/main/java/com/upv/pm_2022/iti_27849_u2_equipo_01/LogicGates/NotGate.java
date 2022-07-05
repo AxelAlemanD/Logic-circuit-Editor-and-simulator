@@ -37,20 +37,15 @@ public class NotGate extends Figure {
         path.lineTo(this.xAxies +80, this.yAxies +50);
         path.lineTo(this.xAxies +80, this.yAxies +55);
         path.lineTo(this.xAxies +50, this.yAxies +55);
+
         // Diagonal inferior
         path.lineTo(this.xAxies, this.yAxies +100);
 
-        // Linea entrada inferior
-        path.lineTo(this.xAxies, this.yAxies +75);
-        path.lineTo(this.xAxies -30, this.yAxies +75);
-        path.lineTo(this.xAxies -30, this.yAxies +80);
-        path.lineTo(this.xAxies, this.yAxies +80);
-
-        // Linea entrada superior
-        path.lineTo(this.xAxies, this.yAxies +25);
-        path.lineTo(this.xAxies -30, this.yAxies +25);
-        path.lineTo(this.xAxies -30, this.yAxies +30);
-        path.lineTo(this.xAxies, this.yAxies +30);
+        // Linea entrada
+        path.lineTo(this.xAxies, this.yAxies +50);
+        path.lineTo(this.xAxies -30, this.yAxies +50);
+        path.lineTo(this.xAxies -30, this.yAxies +55);
+        path.lineTo(this.xAxies, this.yAxies +55);
 
         path.lineTo(this.xAxies, this.yAxies);
 
