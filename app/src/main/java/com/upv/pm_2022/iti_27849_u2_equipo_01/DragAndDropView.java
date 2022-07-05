@@ -23,10 +23,9 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
 public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callback {
 
 	private DragAndDropThread thread;
-//	private ArrayList<Figure> figures;
 	public static ArrayList<Figure> figures;
 	private int figuraActiva;
-	int id = 0;
+	private Canvas canvas;
 	
 	public DragAndDropView(Context context) {
 		super(context);
@@ -61,32 +60,28 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 			}
 		}
 	}
-	
+
+	/**
+	 * Draw the figures on the canvas
+	 * @param canvas
+	 */
 	@Override
 	public void onDraw(Canvas canvas) {
-
 		canvas.drawColor(Color.WHITE);
+		this.canvas = canvas;
 		for(Figure figure : figures){
-			if(figure instanceof AndGate) {
-				AndGate andGate = (AndGate) figure;
-				andGate.draw(canvas);
-			}
-			else if(figure instanceof OrGate) {
-				OrGate orGate = (OrGate) figure;
-				orGate.draw(canvas);
-			}
-			else if(figure instanceof NotGate) {
-				NotGate notGate = (NotGate) figure;
-				notGate.draw(canvas);
-			}
-			else if(figure instanceof NandGate) {
-				NandGate nandGate = (NandGate) figure;
-				nandGate.draw(canvas);
-			}
-			else if(figure instanceof NorGate) {
-				NorGate norGate = (NorGate) figure;
-				norGate.draw(canvas);
-			}
+			if(figure instanceof AndGate)
+				figure.draw(canvas);
+			else if(figure instanceof OrGate)
+				figure.draw(canvas);
+			else if(figure instanceof NotGate)
+				figure.draw(canvas);
+			else if(figure instanceof NandGate)
+				figure.draw(canvas);
+			else if(figure instanceof NorGate)
+				figure.draw(canvas);
+			else if(figure instanceof Point)
+				figure.draw(canvas);
 		}
 	}
 	
@@ -110,6 +105,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 							figuraActiva = figure.onDown(x, y);
 						else if (figure instanceof NorGate)
 							figuraActiva = figure.onDown(x, y);
+						else if (figure instanceof Point)
+							figuraActiva = figure.onDown(x, y);
 					}
 				}
 				break;
@@ -126,6 +123,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 						figures.get(figuraActiva).onMove(x, y);
 					else if(figures.get(figuraActiva) instanceof NorGate)
 						figures.get(figuraActiva).onMove(x, y);
+//					else if(figures.get(figuraActiva) instanceof Point)
+//						((Point) figures.get(figuraActiva)).onMove(x, y, this.canvas);
 				}
 				break;
 
