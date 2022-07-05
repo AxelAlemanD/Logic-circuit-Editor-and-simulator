@@ -18,12 +18,13 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:onClick="addAndGate"
+                android:orientation="vertical">
 
 
                 <TextView
@@ -40,6 +41,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#424242"
                     android:drawableTop="@drawable/logic_state_and"
+                    android:onClick="addAndGate"
                     android:text="And" />
 
                 <Button
@@ -48,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#273AFF"
                     android:drawableTop="@drawable/logic_state_or"
+                    android:onClick="addOrGate"
                     android:text="Or" />
 
                 <Button
@@ -56,6 +59,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#AB0000"
                     android:drawableTop="@drawable/logic_state_not"
+                    android:onClick="addNotGate"
                     android:text="Not" />
 
                 <Button
@@ -64,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D8D800"
                     android:drawableTop="@drawable/logic_state_nand"
+                    android:onClick="addNandGate"
                     android:text="Nand" />
 
                 <Button
@@ -72,15 +77,18 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#27D800"
                     android:drawableTop="@drawable/logic_state_nor"
+                    android:onClick="addNorGate"
                     android:text="Nor" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
@@ -107,6 +115,7 @@
             android:layout_marginBottom="35dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="startSimulation"
             app:srcCompat="@android:drawable/ic_media_play" />
     </LinearLayout>
 </LinearLayout>
