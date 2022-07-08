@@ -56,7 +56,7 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 				thread.join();
 				retry = false;
 			} catch (InterruptedException e) {
-				
+
 			}
 		}
 	}
@@ -68,21 +68,9 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 	@Override
 	public void onDraw(Canvas canvas) {
 		canvas.drawColor(Color.WHITE);
-		this.canvas = canvas;
-		for(Figure figure : figures){
-			if(figure instanceof AndGate)
-				figure.draw(canvas);
-			else if(figure instanceof OrGate)
-				figure.draw(canvas);
-			else if(figure instanceof NotGate)
-				figure.draw(canvas);
-			else if(figure instanceof NandGate)
-				figure.draw(canvas);
-			else if(figure instanceof NorGate)
-				figure.draw(canvas);
-			else if(figure instanceof Point)
-				figure.draw(canvas);
-		}
+//		this.canvas = canvas;
+		for(Figure figure : figures)
+			figure.draw(canvas);
 	}
 	
 	@Override
@@ -94,46 +82,20 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 
 			case MotionEvent.ACTION_DOWN:
 				for(Figure figure : figures) {
-					if(figuraActiva == -1) {
-						if (figure instanceof AndGate)
-							figuraActiva = figure.onDown(x, y);
-						else if (figure instanceof OrGate)
-							figuraActiva = figure.onDown(x, y);
-						else if (figure instanceof NotGate)
-							figuraActiva = figure.onDown(x, y);
-						else if (figure instanceof NandGate)
-							figuraActiva = figure.onDown(x, y);
-						else if (figure instanceof NorGate)
-							figuraActiva = figure.onDown(x, y);
-						else if (figure instanceof Point)
-							figuraActiva = figure.onDown(x, y);
-					}
+					if(figuraActiva == -1)
+						figuraActiva = figure.onDown(x, y);
 				}
-				System.out.println(figuraActiva);
 				break;
 
 			case MotionEvent.ACTION_MOVE:
-				if(figuraActiva != -1) {
-					if(figures.get(figuraActiva) instanceof AndGate)
-						figures.get(figuraActiva).onMove(x, y);
-					else if(figures.get(figuraActiva) instanceof OrGate)
-						figures.get(figuraActiva).onMove(x, y);
-					else if(figures.get(figuraActiva) instanceof NotGate)
-						figures.get(figuraActiva).onMove(x, y);
-					else if(figures.get(figuraActiva) instanceof NandGate)
-						figures.get(figuraActiva).onMove(x, y);
-					else if(figures.get(figuraActiva) instanceof NorGate)
-						figures.get(figuraActiva).onMove(x, y);
-//					else if(figures.get(figuraActiva) instanceof Point)
-//						((Point) figures.get(figuraActiva)).onMove(x, y, this.canvas);
-				}
+				if(figuraActiva != -1)
+					figures.get(figuraActiva).onMove(x, y);
 				break;
 
 			case MotionEvent.ACTION_UP:
 				figuraActiva = -1;
 				break;
 		}
-
 		return true;
 	}
 }

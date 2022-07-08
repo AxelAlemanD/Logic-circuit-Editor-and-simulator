@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // want fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        LinearLayout content = findViewById(R.id.content);
-        content.addView(new DragAndDropView(this));
+        ((LinearLayout) findViewById(R.id.content)).addView(new DragAndDropView(this));
     }
 
     public void addAndGate(View view){

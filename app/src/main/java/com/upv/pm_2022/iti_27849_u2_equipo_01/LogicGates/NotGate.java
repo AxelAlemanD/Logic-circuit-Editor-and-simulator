@@ -15,7 +15,7 @@ public class NotGate extends Figure {
         this.id = id;
         this.xAxies = x;
         this.yAxies = y;
-        this.weight = 80;
+        this.width = 80;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -64,7 +64,7 @@ public class NotGate extends Figure {
      * @return id
      */
     public int onDown(int touchX, int touchY){
-        if(touchX > this.xAxies && touchX < this.xAxies +this.weight &&
+        if(touchX > this.xAxies && touchX < this.xAxies +this.width &&
                 touchY > this.yAxies && touchY < this.yAxies +this.height)
             return this.id;
         return -1;
@@ -76,7 +76,7 @@ public class NotGate extends Figure {
      * @param touchY position of the tap on the Y axis
      */
     public void onMove(int touchX, int touchY){
-        this.xAxies = touchX - this.weight /2;
+        this.xAxies = touchX - this.width /2;
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points

@@ -13,7 +13,7 @@ public abstract class Figure {
 	protected int id;
 	protected int xAxies;
 	protected int yAxies;
-	protected int weight = 100;
+	protected int width = 100;
 	protected int height = 100;
 	protected Paint paint;
 
