@@ -119,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#00FFFFFF"
                         android:drawableTop="@drawable/logic_state_nor"
-                        android:onClick="addNorGate"
+                        android:onClick="addSwitchControl"
                         android:stateListAnimator="@null"
                         android:text="Switch"
                         android:textColor="#333333" />

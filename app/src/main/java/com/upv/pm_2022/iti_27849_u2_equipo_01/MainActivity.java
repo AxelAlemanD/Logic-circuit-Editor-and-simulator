@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
@@ -99,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
+    }
+
+    public void addSwitchControl(View view){
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new SwitchControl(gateId,800,500));
     }
 
     public void startSimulation(View view){
