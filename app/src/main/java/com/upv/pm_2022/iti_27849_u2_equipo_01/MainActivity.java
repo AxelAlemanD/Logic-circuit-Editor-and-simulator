@@ -15,6 +15,7 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.OutputControls.OutputControl;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
         int gateId = id++;
 
         DragAndDropView.figures.add(new SwitchControl(gateId,800,500));
+    }
+
+    public void addOutputControl(View view){
+        int gateId = id++;
+
+        DragAndDropView.figures.add(new OutputControl(gateId,800,500));
     }
 
     public void startSimulation(View view){

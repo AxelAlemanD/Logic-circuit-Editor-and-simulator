@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#00FFFFFF"
                         android:drawableTop="@drawable/logic_state_nor"
-                        android:onClick="addNorGate"
+                        android:onClick="addOutputControl"
                         android:stateListAnimator="@null"
                         android:text="Output"
                         android:textColor="#333333" />
