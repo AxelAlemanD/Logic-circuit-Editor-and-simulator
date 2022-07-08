@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
+
+        Toast.makeText(context, "Puerta AND agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addOrGate(View view){
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
+
+        Toast.makeText(context, "Puerta OR agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNotGate(View view){
@@ -72,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
+
+        Toast.makeText(context, "Puerta NOT agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNandGate(View view){
@@ -86,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
+
+        Toast.makeText(context, "Puerta NAND agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNorGate(View view){
@@ -100,18 +108,24 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.add(outputPoint);
         DragAndDropView.figures.add(inputPointA);
         DragAndDropView.figures.add(inputPointB);
+
+        Toast.makeText(context, "Puerta NOR agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addSwitchControl(View view){
         int gateId = id++;
 
         DragAndDropView.figures.add(new SwitchControl(gateId,800,500));
+
+        Toast.makeText(context, "Switch agregado", Toast.LENGTH_SHORT).show();
     }
 
     public void addOutputControl(View view){
         int gateId = id++;
 
         DragAndDropView.figures.add(new OutputControl(gateId,800,500));
+
+        Toast.makeText(context, "Control de salida agregado", Toast.LENGTH_SHORT).show();
     }
 
     public void startSimulation(View view){
