@@ -15,81 +15,141 @@
         android:background="#ffffff"
         android:orientation="horizontal">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:onClick="addAndGate"
-                android:orientation="vertical">
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:text="Input gates"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/addAndGateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#424242"
-                    android:drawableTop="@drawable/logic_state_and"
                     android:onClick="addAndGate"
-                    android:text="And" />
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/addOrGateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#273AFF"
-                    android:drawableTop="@drawable/logic_state_or"
-                    android:onClick="addOrGate"
-                    android:text="Or" />
 
-                <Button
-                    android:id="@+id/addNotGateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#AB0000"
-                    android:drawableTop="@drawable/logic_state_not"
-                    android:onClick="addNotGate"
-                    android:text="Not" />
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="-10dp"
+                        android:background="#333333"
+                        android:gravity="center_vertical"
+                        android:text="Input gates"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/addNandGateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#D8D800"
-                    android:drawableTop="@drawable/logic_state_nand"
-                    android:onClick="addNandGate"
-                    android:text="Nand" />
+                    <Button
+                        android:id="@+id/addAndGateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_and"
+                        android:onClick="addAndGate"
+                        android:stateListAnimator="@null"
+                        android:text="And"
+                        android:textColor="#333333" />
 
-                <Button
-                    android:id="@+id/addNorGateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#27D800"
-                    android:drawableTop="@drawable/logic_state_nor"
-                    android:onClick="addNorGate"
-                    android:text="Nor" />
+                    <Button
+                        android:id="@+id/addOrGateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_or"
+                        android:onClick="addOrGate"
+                        android:stateListAnimator="@null"
+                        android:text="Or"
+                        android:textColor="#333333" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TextView>
+                    <Button
+                        android:id="@+id/addNotGateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_not"
+                        android:onClick="addNotGate"
+                        android:stateListAnimator="@null"
+                        android:text="Not"
+                        android:textColor="#333333" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TextView>
+                    <Button
+                        android:id="@+id/addNandGateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_nand"
+                        android:onClick="addNandGate"
+                        android:stateListAnimator="@null"
+                        android:text="Nand"
+                        android:textColor="#333333" />
 
-            </LinearLayout>
-        </ScrollView>
+                    <Button
+                        android:id="@+id/addNorGateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_nor"
+                        android:onClick="addNorGate"
+                        android:stateListAnimator="@null"
+                        android:text="Nor"
+                        android:textColor="#333333" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="-10dp"
+                        android:background="#333333"
+                        android:gravity="center_vertical"
+                        android:text="Input controls"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/addSwitchControlBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_nor"
+                        android:onClick="addNorGate"
+                        android:stateListAnimator="@null"
+                        android:text="Switch"
+                        android:textColor="#333333" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="-10dp"
+                        android:background="#333333"
+                        android:gravity="center_vertical"
+                        android:text="Output controls"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/addOutputControlBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/logic_state_nor"
+                        android:onClick="addNorGate"
+                        android:stateListAnimator="@null"
+                        android:text="Output"
+                        android:textColor="#333333" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
