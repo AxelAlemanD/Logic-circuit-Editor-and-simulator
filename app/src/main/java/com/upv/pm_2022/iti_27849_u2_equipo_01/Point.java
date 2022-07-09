@@ -10,6 +10,8 @@ public class Point extends Figure {
     private int radius;
     private int diffX;
     private int diffY;
+    public Point connectedPoint;
+    public ConnectionLine connectedLine;
 
     public Point(int pointId, String name, String type, int x, int y, int radius, Figure gate) {
         this.id = pointId;
@@ -44,10 +46,9 @@ public class Point extends Figure {
      * @return id
      */
     public int onDown(int touchX, int touchY){
-        if((Math.pow(this.radius, 2) + 100) > (Math.pow(touchX - this.xAxies, 2) + Math.pow(touchY - this.yAxies, 2))) {
+        if(this.type.equalsIgnoreCase("output")
+                && (Math.pow(this.radius, 2) + 100) > (Math.pow(touchX - this.xAxies, 2) + Math.pow(touchY - this.yAxies, 2)) )
             MainActivity.selectInput(this);
-            return this.id;
-        }
         return -1;
     }
 
@@ -61,23 +62,10 @@ public class Point extends Figure {
         this.yAxies = yAxiesGate - this.diffY;
     }
 
-    /**
-     * Modify the position of the figure according to the position of the finger
-     * @param touchX position of the tap on the X axis
-     * @param touchY position of the tap on the Y axis
-     */
-//    public void onMove(int touchX, int touchY, Canvas canvas){
-//        canvas.drawLine(this.xAxies, this.yAxies, touchX, touchY, paint);
-//        MainActivity.selectInput(this);
-//    }
+    public Figure getGate(){ return this.gate; }
+    public String getType(){ return this.type; }
 
     @Override
-    public String toString(){
-        return "ID: "+this.id+"\n"+
-                "GateID: "+this.gate.name+"\n"+
-                "Radius: "+this.radius+"\n"+
-                "xAxies: "+this.xAxies +"\n"+
-                "yAxies: "+this.yAxies;
-    }
+    public String toString(){ return gate.name+": Point "+this.name; }
 }
 

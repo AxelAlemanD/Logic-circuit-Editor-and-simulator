@@ -14,18 +14,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
-
 public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callback {
 
 	private DragAndDropThread thread;
 	public static ArrayList<Figure> figures;
-	public static ArrayList<Figure> points;
-	private int figuraActiva;
+	public static ArrayList<Figure> lines;
+	private int activeFigure;
 	
 	public DragAndDropView(Context context) {
 		super(context);
@@ -40,7 +34,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 	@Override
 	public void surfaceCreated(SurfaceHolder arg0) {
 		figures = new ArrayList<Figure>();
-		figuraActiva = -1;
+		lines = new ArrayList<Figure>();
+		activeFigure = -1;
 		
 		thread = new DragAndDropThread(getHolder(), this);
 		thread.setRunning(true);
@@ -73,6 +68,9 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 			for(Figure point : figure.getPoints())
 				point.draw(canvas);
 		}
+		for (Figure line : lines){
+			line.draw(canvas);
+		}
 	}
 	
 	@Override
@@ -84,8 +82,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 
 			case MotionEvent.ACTION_DOWN:
 				for(Figure figure : figures) {
-					if(figuraActiva == -1) {
-						figuraActiva = figure.onDown(x, y);
+					if(activeFigure == -1) {
+						activeFigure = figure.onDown(x, y);
 						for(Figure point : figure.getPoints())
 							point.onDown(x, y);
 					}
@@ -93,12 +91,12 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 				break;
 
 			case MotionEvent.ACTION_MOVE:
-				if(figuraActiva != -1)
-					figures.get(figuraActiva).onMove(x, y);
+				if(activeFigure != -1)
+					figures.get(activeFigure).onMove(x, y);
 				break;
 
 			case MotionEvent.ACTION_UP:
-				figuraActiva = -1;
+				activeFigure = -1;
 				break;
 		}
 		return true;
