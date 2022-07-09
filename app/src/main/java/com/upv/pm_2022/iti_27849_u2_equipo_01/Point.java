@@ -5,22 +5,22 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Point extends Figure {
-    private int radius;
     private Figure gate;
+    private String type;
+    private int radius;
     private int diffX;
     private int diffY;
 
-    public Point(Figure gate, int x, int y, int radius, int pointId, String name) {
-        this.gate = gate;
+    public Point(int pointId, String name, String type, int x, int y, int radius, Figure gate) {
         this.id = pointId;
+        this.name = name;
+        this.type = type;
         this.xAxies = x;
         this.yAxies = y;
-        this.name = name;
-//        this.diffX = DragAndDropView.figures.get(this.gate.id).xAxies - this.xAxies;
-//        this.diffY = DragAndDropView.figures.get(this.gate.id).xAxies - this.yAxies;
+        this.radius = radius;
+        this.gate = gate;
         this.diffX = gate.xAxies - this.xAxies;
         this.diffY = gate.xAxies - this.yAxies;
-        this.radius = radius;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
