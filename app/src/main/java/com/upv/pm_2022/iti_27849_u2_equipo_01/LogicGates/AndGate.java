@@ -9,13 +9,17 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
+import java.util.ArrayList;
+
 public class AndGate extends Figure {
+
 
     public AndGate(int id, int x, int y) {
         this.id = id;
         this.xAxies = x;
         this.yAxies = y;
         this.name = "AND " + this.id;
+        this.points = new ArrayList<Figure>();
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -156,9 +160,17 @@ public class AndGate extends Figure {
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points
-        for(Figure point : DragAndDropView.figures.subList(this.id+1, this.id+4)){
+        for(Figure point : this.points){
             ((Point) point).onMoveGate(this.xAxies, this.yAxies-100);
         }
+    }
+
+    public void addPoint(Point point){
+        points.add(point);
+    }
+
+    public ArrayList<Figure> getPoints(){
+        return points;
     }
 }
 

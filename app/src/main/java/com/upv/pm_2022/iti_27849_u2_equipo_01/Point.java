@@ -6,18 +6,20 @@ import android.graphics.Paint;
 
 public class Point extends Figure {
     private int radius;
-    private int gateId;
+    private Figure gate;
     private int diffX;
     private int diffY;
 
-    public Point(int gateId, int x, int y, int radius, int pointId, String name) {
-        this.gateId = gateId;
+    public Point(Figure gate, int x, int y, int radius, int pointId, String name) {
+        this.gate = gate;
         this.id = pointId;
         this.xAxies = x;
         this.yAxies = y;
         this.name = name;
-        this.diffX = DragAndDropView.figures.get(this.gateId).xAxies - this.xAxies;
-        this.diffY = DragAndDropView.figures.get(this.gateId).xAxies - this.yAxies;
+//        this.diffX = DragAndDropView.figures.get(this.gate.id).xAxies - this.xAxies;
+//        this.diffY = DragAndDropView.figures.get(this.gate.id).xAxies - this.yAxies;
+        this.diffX = gate.xAxies - this.xAxies;
+        this.diffY = gate.xAxies - this.yAxies;
         this.radius = radius;
 
         this.paint = new Paint();
@@ -72,7 +74,7 @@ public class Point extends Figure {
     @Override
     public String toString(){
         return "ID: "+this.id+"\n"+
-                "GateID: "+this.gateId+"\n"+
+                "GateID: "+this.gate.name+"\n"+
                 "Radius: "+this.radius+"\n"+
                 "xAxies: "+this.xAxies +"\n"+
                 "yAxies: "+this.yAxies;

@@ -20,7 +20,12 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.OutputControls.OutputControl;
 public class MainActivity extends AppCompatActivity {
 
     private static Context context;
-    private int id = 0;
+    private int gate_id = 0;
+    private int point_id = 0;
+    Figure gate;
+    Point outputPoint;
+    Point inputPointA;
+    Point inputPointB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,94 +41,95 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addAndGate(View view){
-        int gateId = id++;
-        DragAndDropView.figures.add(new AndGate(gateId,400,500));
+        gate = new AndGate(gate_id++,400,500);
 
-        Point outputPoint = new Point(gateId,517, 553, 10, id++, "A");
-        Point inputPointA = new Point(gateId,360, 530, 10, id++, "B");
-        Point inputPointB = new Point(gateId,360, 575, 10, id++, "C");
+        DragAndDropView.figures.add(gate);
 
-        DragAndDropView.figures.add(outputPoint);
-        DragAndDropView.figures.add(inputPointA);
-        DragAndDropView.figures.add(inputPointB);
+        outputPoint = new Point(gate,517, 553, 10, point_id++, "A");
+        inputPointA = new Point(gate,360, 530, 10, point_id++, "B");
+        inputPointB = new Point(gate,360, 575, 10, point_id++, "C");
+
+        gate.addPoint(outputPoint);
+        gate.addPoint(inputPointA);
+        gate.addPoint(inputPointB);
 
         Toast.makeText(context, "Puerta AND agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addOrGate(View view){
-        int gateId = id++;
+        gate = new OrGate(gate_id++,800,500);
 
-        DragAndDropView.figures.add(new OrGate(gateId,800,500));
+        DragAndDropView.figures.add(gate);
 
-        Point outputPoint = new Point(gateId,917, 553, 10, id++, "A");
-        Point inputPointA = new Point(gateId,760, 505, 10, id++, "B");
-        Point inputPointB = new Point(gateId,760, 597, 10, id++, "C");
+        outputPoint = new Point(gate,917, 553, 10, point_id++, "A");
+        inputPointA = new Point(gate,760, 505, 10, point_id++, "B");
+        inputPointB = new Point(gate,760, 597, 10, point_id++, "C");
 
-        DragAndDropView.figures.add(outputPoint);
-        DragAndDropView.figures.add(inputPointA);
-        DragAndDropView.figures.add(inputPointB);
+        gate.addPoint(outputPoint);
+        gate.addPoint(inputPointA);
+        gate.addPoint(inputPointB);
 
         Toast.makeText(context, "Puerta OR agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNotGate(View view){
-        int gateId = id++;
+        gate = new NotGate(gate_id++,800,500);
 
-        DragAndDropView.figures.add(new NotGate(gateId,800,500));
+        DragAndDropView.figures.add(gate);
 
-        Point outputPoint = new Point(gateId,890, 553, 10, id++, "A");
-        Point inputPointA = new Point(gateId,760, 553, 10, id++, "B");
+        outputPoint = new Point(gate,890, 553, 10, point_id++, "A");
+        inputPointA = new Point(gate,760, 553, 10, point_id++, "B");
 
-        DragAndDropView.figures.add(outputPoint);
-        DragAndDropView.figures.add(inputPointA);
+        gate.addPoint(outputPoint);
+        gate.addPoint(inputPointA);
 
         Toast.makeText(context, "Puerta NOT agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNandGate(View view){
-        int gateId = id++;
+        gate = new NandGate(gate_id++,400,500);
 
-        DragAndDropView.figures.add(new NandGate(gateId,400,500));
+        DragAndDropView.figures.add(gate);
 
-        Point outputPoint = new Point(gateId,530, 553, 10, id++, "A");
-        Point inputPointA = new Point(gateId,360, 530, 10, id++, "B");
-        Point inputPointB = new Point(gateId,360, 575, 10, id++, "C");
+        outputPoint = new Point(gate,530, 553, 10, point_id++, "A");
+        inputPointA = new Point(gate,360, 530, 10, point_id++, "B");
+        inputPointB = new Point(gate,360, 575, 10, point_id++, "C");
 
-        DragAndDropView.figures.add(outputPoint);
-        DragAndDropView.figures.add(inputPointA);
-        DragAndDropView.figures.add(inputPointB);
+        gate.addPoint(outputPoint);
+        gate.addPoint(inputPointA);
+        gate.addPoint(inputPointB);
 
         Toast.makeText(context, "Puerta NAND agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addNorGate(View view){
-        int gateId = id++;
+        gate = new NorGate(gate_id++,800,500);
 
-        DragAndDropView.figures.add(new NorGate(gateId,800,500));
+        DragAndDropView.figures.add(gate);
 
-        Point outputPoint = new Point(gateId,930, 553, 10, id++, "A");
-        Point inputPointA = new Point(gateId,760, 505, 10, id++, "B");
-        Point inputPointB = new Point(gateId,760, 597, 10, id++, "C");
+        outputPoint = new Point(gate,930, 553, 10, point_id++, "A");
+        inputPointA = new Point(gate,760, 505, 10, point_id++, "B");
+        inputPointB = new Point(gate,760, 597, 10, point_id++, "C");
 
-        DragAndDropView.figures.add(outputPoint);
-        DragAndDropView.figures.add(inputPointA);
-        DragAndDropView.figures.add(inputPointB);
+        gate.addPoint(outputPoint);
+        gate.addPoint(inputPointA);
+        gate.addPoint(inputPointB);
 
         Toast.makeText(context, "Puerta NOR agregada", Toast.LENGTH_SHORT).show();
     }
 
     public void addSwitchControl(View view){
-        int gateId = id++;
+        gate = new SwitchControl(gate_id++,800,500);
 
-        DragAndDropView.figures.add(new SwitchControl(gateId,800,500));
+        DragAndDropView.figures.add(gate);
 
         Toast.makeText(context, "Switch agregado", Toast.LENGTH_SHORT).show();
     }
 
     public void addOutputControl(View view){
-        int gateId = id++;
+        gate = new OutputControl(gate_id++,800,500);
 
-        DragAndDropView.figures.add(new OutputControl(gateId,800,500));
+        DragAndDropView.figures.add(gate);
 
         Toast.makeText(context, "Control de salida agregado", Toast.LENGTH_SHORT).show();
     }

@@ -24,8 +24,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 
 	private DragAndDropThread thread;
 	public static ArrayList<Figure> figures;
+	public static ArrayList<Figure> points;
 	private int figuraActiva;
-	private Canvas canvas;
 	
 	public DragAndDropView(Context context) {
 		super(context);
@@ -68,9 +68,11 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 	@Override
 	public void onDraw(Canvas canvas) {
 		canvas.drawColor(Color.WHITE);
-//		this.canvas = canvas;
-		for(Figure figure : figures)
+		for(Figure figure : figures) {
 			figure.draw(canvas);
+			for(Figure point : figure.getPoints())
+				point.draw(canvas);
+		}
 	}
 	
 	@Override
@@ -82,8 +84,11 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 
 			case MotionEvent.ACTION_DOWN:
 				for(Figure figure : figures) {
-					if(figuraActiva == -1)
+					if(figuraActiva == -1) {
 						figuraActiva = figure.onDown(x, y);
+						for(Figure point : figure.getPoints())
+							point.onDown(x, y);
+					}
 				}
 				break;
 

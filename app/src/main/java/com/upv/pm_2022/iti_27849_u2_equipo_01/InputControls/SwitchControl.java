@@ -8,6 +8,8 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
+import java.util.ArrayList;
+
 public class SwitchControl extends Figure {
 
     public SwitchControl(int id, int x, int y) {
@@ -16,6 +18,7 @@ public class SwitchControl extends Figure {
         this.yAxies = y;
         this.width = 50;
         this.name = "SWITCH " + this.id;
+        this.points = new ArrayList<Figure>();
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -115,9 +118,17 @@ public class SwitchControl extends Figure {
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points
-//        for(Figure point : DragAndDropView.figures.subList(this.id+1, this.id+4)){
+//        for(Figure point : this.points){
 //            ((Point) point).onMoveGate(this.xAxies, this.yAxies-100);
 //        }
+    }
+
+    public void addPoint(Point point){
+        points.add(point);
+    }
+
+    public ArrayList<Figure> getPoints(){
+        return points;
     }
 }
 
