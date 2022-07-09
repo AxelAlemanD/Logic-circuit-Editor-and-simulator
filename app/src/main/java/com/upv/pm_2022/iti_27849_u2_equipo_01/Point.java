@@ -10,11 +10,12 @@ public class Point extends Figure {
     private int diffX;
     private int diffY;
 
-    public Point(int gateId, int x, int y, int radius, int pointId) {
+    public Point(int gateId, int x, int y, int radius, int pointId, String name) {
         this.gateId = gateId;
         this.id = pointId;
         this.xAxies = x;
         this.yAxies = y;
+        this.name = name;
         this.diffX = DragAndDropView.figures.get(this.gateId).xAxies - this.xAxies;
         this.diffY = DragAndDropView.figures.get(this.gateId).xAxies - this.yAxies;
         this.radius = radius;
@@ -31,6 +32,7 @@ public class Point extends Figure {
      */
     public void draw(Canvas canvas){
         canvas.drawCircle(this.xAxies, this.yAxies,this.radius,paint);
+        canvas.drawText(this.name, this.xAxies-4, this.yAxies+22,paint);
     }
 
     /**

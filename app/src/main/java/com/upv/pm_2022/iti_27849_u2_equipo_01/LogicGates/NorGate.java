@@ -15,6 +15,7 @@ public class NorGate extends Figure {
         this.id = id;
         this.xAxies = x;
         this.yAxies = y;
+        this.name = "NOR " + this.id;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -96,6 +97,7 @@ public class NorGate extends Figure {
         path.addCircle(this.xAxies +100, this.yAxies +52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
+        canvas.drawText(this.name, this.xAxies+20, this.yAxies+120, paint);
     }
 
     /**

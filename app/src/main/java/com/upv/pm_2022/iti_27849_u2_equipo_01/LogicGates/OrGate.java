@@ -15,6 +15,7 @@ public class OrGate extends Figure {
         this.id = id;
         this.xAxies = x;
         this.yAxies = y;
+        this.name = "OR " + this.id;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -96,6 +97,7 @@ public class OrGate extends Figure {
                 this.xAxies +50,this.yAxies +100);
 
         canvas.drawPath(path, paint);
+        canvas.drawText(this.name, this.xAxies+20, this.yAxies+120, paint);
     }
     /**
      * Check that you are clicking inside the figure

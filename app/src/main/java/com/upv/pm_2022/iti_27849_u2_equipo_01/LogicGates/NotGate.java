@@ -16,6 +16,7 @@ public class NotGate extends Figure {
         this.xAxies = x;
         this.yAxies = y;
         this.width = 80;
+        this.name = "NOT " + this.id;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -55,6 +56,7 @@ public class NotGate extends Figure {
         path.addCircle(this.xAxies +55, this.yAxies +52, 10, Path.Direction.CW);
 
         canvas.drawPath(path, paint);
+        canvas.drawText(this.name, this.xAxies+20, this.yAxies+120, paint);
     }
 
     /**

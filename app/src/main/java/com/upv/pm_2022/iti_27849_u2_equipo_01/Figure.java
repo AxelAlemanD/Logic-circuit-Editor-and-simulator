@@ -16,6 +16,7 @@ public abstract class Figure {
 	protected int width = 100;
 	protected int height = 100;
 	protected Paint paint;
+	protected String name;
 
 	public void draw(Canvas canvas){ }
 

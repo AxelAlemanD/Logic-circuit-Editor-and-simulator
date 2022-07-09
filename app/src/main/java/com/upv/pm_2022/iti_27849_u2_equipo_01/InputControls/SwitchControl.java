@@ -15,13 +15,14 @@ public class SwitchControl extends Figure {
         this.xAxies = x;
         this.yAxies = y;
         this.width = 50;
+        this.name = "SWITCH " + this.id;
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.DKGRAY);
-        paint.setStyle(Paint.Style.STROKE); // Figura solo con borde
-        // paint.setStyle(Paint.Style.FILL); // Figura solida
-        paint.setStrokeWidth(3f);
+//        paint.setStyle(Paint.Style.STROKE); // Figura solo con borde
+        paint.setStyle(Paint.Style.FILL); // Figura solida
+//        paint.setStrokeWidth(3f);
     }
 
     /**
@@ -88,6 +89,7 @@ public class SwitchControl extends Figure {
         path.lineTo(this.xAxies, this.yAxies);
 
         canvas.drawPath(path, paint);
+        canvas.drawText(this.name, this.xAxies, this.yAxies+120, paint);
     }
 
     /**
