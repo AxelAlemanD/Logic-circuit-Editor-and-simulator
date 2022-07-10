@@ -97,5 +97,12 @@ public class NotGate extends Figure {
     public ArrayList<Figure> getPoints(){
         return points;
     }
+
+    @Override
+    public Boolean getOutput() {
+        ((Point) this.points.get(0)).status = !(((Point) this.points.get(1)).connectedPoint.status);
+
+        return ((Point) this.points.get(0)).status;
+    }
 }
 

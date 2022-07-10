@@ -173,5 +173,13 @@ public class NandGate extends Figure {
     public ArrayList<Figure> getPoints(){
         return points;
     }
+
+    @Override
+    public Boolean getOutput() {
+        ((Point) this.points.get(0)).status = !(((Point) this.points.get(1)).connectedPoint.status
+                && ((Point) this.points.get(2)).connectedPoint.status);
+
+        return ((Point) this.points.get(0)).status;
+    }
 }
 

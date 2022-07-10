@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     public void addSwitchControl(View view){
         gate = new SwitchControl(gate_id++,800,500);
         DragAndDropView.figures.add(gate);
+        gate.addPoint(new Point(point_id++, "A", "output",900, 553, 10, gate));
         showMessageElementAdded();
     }
 
@@ -109,7 +110,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startSimulation(View view){
-        Toast.makeText(getApplicationContext(), "Start simulation", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Start simulation", Toast.LENGTH_SHORT).show();
+        ArrayList<Figure> figures = new ArrayList<Figure>();
+        // Get all points
+        for (Figure figure: DragAndDropView.figures){
+                figures.add(figure);
+        }
+
+        for(Figure figure : figures){
+            System.out.println(figure.name+": "+figure.getOutput());
+        }
     }
 
     public static void selectInput(Point outputPoint){
@@ -118,27 +128,28 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.select_point);
 
         ((EditText) dialog.findViewById(R.id.outputPoint)).setText(outputPoint.toString());
-        ((EditText) dialog.findViewById(R.id.outputPoint)).setEnabled(false);
+        dialog.findViewById(R.id.outputPoint).setEnabled(false);
 
         ArrayList<Point> points = new ArrayList<Point>();
+        // Get all points
         for (Figure figure: DragAndDropView.figures){
             for (Figure point: figure.getPoints()) {
-                if( ((Point) point).getGate().id != outputPoint.getGate().id
-                        && ((Point) point).getType().equalsIgnoreCase("input")
-                        && ((Point) point).connectedPoint == null)
+                // Validate points
+                if( ((Point) point).getGate().id != outputPoint.getGate().id // Validate that it does not belong to the same door
+                        && ((Point) point).getType().equalsIgnoreCase("input") // Validate that it is of type Input
+                        && ((Point) point).connectedPoint == null) // Validate that it is not assigned
                     points.add((Point) point);
             }
         }
 
-        Spinner spPoints = (Spinner) dialog.findViewById(R.id.spPoints);
-        adapter = new ArrayAdapter<Point>(context, android.R.layout.simple_spinner_item, points);
+        Spinner spPoints = dialog.findViewById(R.id.spPoints);
+        adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, points);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spPoints.setAdapter(adapter);
 
         dialog.show();
 
-        ((Button) dialog.findViewById(R.id.saveBtn)).setOnClickListener(v -> {
-
+        dialog.findViewById(R.id.saveBtn).setOnClickListener(v -> {
             // If it has an assigned line it is removed
             if(outputPoint.connectedLine != null){
                 outputPoint.connectedLine.pointA.connectedPoint = null;
@@ -158,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.hide();
         });
 
-        ((Button) dialog.findViewById(R.id.cancelBtn)).setOnClickListener(v ->
+        dialog.findViewById(R.id.cancelBtn).setOnClickListener(v ->
             dialog.hide()
         );
     }

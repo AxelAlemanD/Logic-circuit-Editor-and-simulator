@@ -12,6 +12,7 @@ public class Point extends Figure {
     private int diffY;
     public Point connectedPoint;
     public ConnectionLine connectedLine;
+    public Boolean status = false;
 
     public Point(int pointId, String name, String type, int x, int y, int radius, Figure gate) {
         this.id = pointId;

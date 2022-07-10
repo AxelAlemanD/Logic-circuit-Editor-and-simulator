@@ -32,4 +32,6 @@ public abstract class Figure {
 	public void addPoint(Point point){	}
 
 	public ArrayList<Figure> getPoints(){ return points; }
+
+	public Boolean getOutput(){ return true; }
 }

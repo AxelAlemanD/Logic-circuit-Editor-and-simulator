@@ -4,12 +4,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AndGate extends Figure {
 
@@ -171,6 +176,14 @@ public class AndGate extends Figure {
 
     public ArrayList<Figure> getPoints(){
         return points;
+    }
+
+    @Override
+    public Boolean getOutput() {
+        ((Point) this.points.get(0)).status = ((Point) this.points.get(1)).connectedPoint.status
+                                               && ((Point) this.points.get(2)).connectedPoint.status;
+
+        return ((Point) this.points.get(0)).status;
     }
 }
 

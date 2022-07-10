@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class SwitchControl extends Figure {
 
+    private Boolean is_active = false;
+
     public SwitchControl(int id, int x, int y) {
         this.id = id;
         this.xAxies = x;
@@ -103,8 +105,14 @@ public class SwitchControl extends Figure {
      */
     public int onDown(int touchX, int touchY){
         if(touchX > this.xAxies && touchX < this.xAxies +this.width &&
-                touchY > this.yAxies && touchY < this.yAxies +this.height)
+                touchY > this.yAxies && touchY < this.yAxies +this.height) {
+
+            this.is_active = !is_active;
+            ((Point) this.points.get(0)).status = this.is_active;
+            this.activate();
+
             return this.id;
+        }
         return -1;
     }
 
@@ -118,9 +126,9 @@ public class SwitchControl extends Figure {
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points
-//        for(Figure point : this.points){
-//            ((Point) point).onMoveGate(this.xAxies, this.yAxies-100);
-//        }
+        for(Figure point : this.points){
+            ((Point) point).onMoveGate(this.xAxies, this.yAxies+300);
+        }
     }
 
     public void addPoint(Point point){
@@ -129,6 +137,18 @@ public class SwitchControl extends Figure {
 
     public ArrayList<Figure> getPoints(){
         return points;
+    }
+
+    @Override
+    public Boolean getOutput() {
+        return this.is_active;
+    }
+
+    public void activate(){
+        if(is_active)
+            this.paint.setColor(Color.RED);
+        else
+            this.paint.setColor(Color.BLACK);
     }
 }
 
