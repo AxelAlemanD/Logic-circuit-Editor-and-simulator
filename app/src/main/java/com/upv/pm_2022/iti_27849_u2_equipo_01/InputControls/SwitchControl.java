@@ -146,7 +146,7 @@ public class SwitchControl extends Figure {
 
     public void activate(){
         if(is_active)
-            this.paint.setColor(Color.RED);
+            this.paint.setColor(Color.BLUE);
         else
             this.paint.setColor(Color.BLACK);
     }

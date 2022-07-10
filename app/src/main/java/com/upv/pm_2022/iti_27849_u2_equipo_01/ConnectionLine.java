@@ -14,7 +14,7 @@ public class ConnectionLine extends Figure {
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.DKGRAY);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2f);
     }
@@ -26,6 +26,5 @@ public class ConnectionLine extends Figure {
     public void draw(Canvas canvas){
         canvas.drawLine(this.pointA.xAxies, this.pointA.yAxies, this.pointB.xAxies, this.pointB.yAxies, paint);
     }
-
 }
 

@@ -6,6 +6,7 @@
 package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import java.util.ArrayList;
@@ -34,4 +35,8 @@ public abstract class Figure {
 	public ArrayList<Figure> getPoints(){ return points; }
 
 	public Boolean getOutput(){ return true; }
+
+	public void active(){ this.paint.setColor(Color.BLUE); }
+
+	public void disable(){ this.paint.setColor(Color.DKGRAY); }
 }

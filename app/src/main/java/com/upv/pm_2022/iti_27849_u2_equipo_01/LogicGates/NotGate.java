@@ -23,7 +23,7 @@ public class NotGate extends Figure {
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.RED);
+        paint.setColor(Color.DKGRAY);
         paint.setStyle(Paint.Style.FILL);
     }
 

@@ -118,7 +118,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for(Figure figure : figures){
-            System.out.println(figure.name+": "+figure.getOutput());
+//            System.out.println(figure.name+": "+figure.getOutput());
+            if(figure.getOutput()){
+                figure.active();
+                for(Figure point : figure.getPoints()){
+                    if(((Point) point).getType().equalsIgnoreCase("input"))
+                        ((Point) point).connectedLine.active();
+                }
+            }
+            else{
+                figure.disable();
+                for(Figure point : figure.getPoints()){
+                    if(((Point) point).getType().equalsIgnoreCase("input"))
+                        ((Point) point).connectedLine.disable();
+                }
+            }
         }
     }
 

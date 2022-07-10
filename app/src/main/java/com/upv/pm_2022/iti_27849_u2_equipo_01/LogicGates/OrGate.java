@@ -22,7 +22,7 @@ public class OrGate extends Figure {
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLUE);
+        paint.setColor(Color.DKGRAY);
         paint.setStyle(Paint.Style.FILL);
     }
 

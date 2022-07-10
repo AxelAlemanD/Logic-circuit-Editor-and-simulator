@@ -22,7 +22,7 @@ public class NorGate extends Figure {
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.DKGRAY);
         paint.setStyle(Paint.Style.FILL);
     }
 
