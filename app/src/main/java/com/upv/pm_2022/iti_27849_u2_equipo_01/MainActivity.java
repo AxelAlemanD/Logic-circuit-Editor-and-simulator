@@ -3,14 +3,17 @@ package com.upv.pm_2022.iti_27849_u2_equipo_01;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayAdapter<Point> adapter;
     private int gate_id = 0;
     private int point_id = 0;
+    public static Boolean is_running = false;
+    private Intent intentSimulationService;
     Figure gate;
 
     @Override
@@ -102,12 +107,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startSimulation(View view){
-        Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
-        for (Figure figure : DragAndDropView.figures) {
-            if (figure.getOutput())
-                figure.active();
-            else
-                figure.disable();
+        if(!is_running){
+            Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
+            ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
+            intentSimulationService = new Intent(this, SimulationService.class);
+            startService(intentSimulationService);
+            is_running = true;
+            enableOrDisableButtons(is_running);
+        }
+        else {
+            Toast.makeText(context, "Stop simulation", Toast.LENGTH_SHORT).show();
+            ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            is_running = false;
+            enableOrDisableButtons(is_running);
         }
     }
 
@@ -117,6 +129,17 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.lines.clear();
         this.gate_id = 0;
         this.point_id = 0;
+    }
+
+    public void enableOrDisableButtons(Boolean status){
+        ((FloatingActionButton) findViewById(R.id.clearDisplayBtn)).setEnabled(!status);
+        ((FloatingActionButton) findViewById(R.id.showGraphBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addAndGateBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addNandGateBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addNorGateBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addNotGateBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addOrGateBtn)).setEnabled(!status);
+        ((Button) findViewById(R.id.addSwitchControlBtn)).setEnabled(!status);
     }
 
     public static void selectInput(Point outputPoint){
