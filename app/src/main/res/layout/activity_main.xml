@@ -166,7 +166,18 @@
         android:layout_weight="5"
         android:background="#ffffff"
         android:gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/clearDisplayBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="cleanDisplay"
+            app:backgroundTint="#F6F4F4"
+            app:srcCompat="@drawable/outline_cleaning_services_black_24dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/startSimulation"

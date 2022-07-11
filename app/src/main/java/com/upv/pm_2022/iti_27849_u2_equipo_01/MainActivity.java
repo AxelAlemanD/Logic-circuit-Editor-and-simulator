@@ -136,6 +136,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void cleanDisplay(View view){
+        DragAndDropView.figures.clear();
+        DragAndDropView.lines.clear();
+        this.gate_id = 0;
+        this.point_id = 0;
+
+        Toast.makeText(context, "Clean display", Toast.LENGTH_SHORT).show();
+    }
+
+
     public static void selectInput(Point outputPoint){
         final Dialog dialog = new Dialog(context);
         dialog.setCancelable(true);
