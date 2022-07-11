@@ -1,23 +1,16 @@
 package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
@@ -25,7 +18,6 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.OutputControls.OutputControl;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,41 +102,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startSimulation(View view){
-//        Toast.makeText(getApplicationContext(), "Start simulation", Toast.LENGTH_SHORT).show();
-        ArrayList<Figure> figures = new ArrayList<Figure>();
-        // Get all points
-        for (Figure figure: DragAndDropView.figures){
-                figures.add(figure);
-        }
-
-        for(Figure figure : figures){
-//            System.out.println(figure.name+": "+figure.getOutput());
-            if(figure.getOutput()){
+        Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
+        for (Figure figure : DragAndDropView.figures) {
+            if (figure.getOutput())
                 figure.active();
-                for(Figure point : figure.getPoints()){
-                    if(((Point) point).getType().equalsIgnoreCase("input"))
-                        ((Point) point).connectedLine.active();
-                }
-            }
-            else{
+            else
                 figure.disable();
-                for(Figure point : figure.getPoints()){
-                    if(((Point) point).getType().equalsIgnoreCase("input"))
-                        ((Point) point).connectedLine.disable();
-                }
-            }
         }
     }
 
     public void cleanDisplay(View view){
+        Toast.makeText(context, "Clean display", Toast.LENGTH_SHORT).show();
         DragAndDropView.figures.clear();
         DragAndDropView.lines.clear();
         this.gate_id = 0;
         this.point_id = 0;
-
-        Toast.makeText(context, "Clean display", Toast.LENGTH_SHORT).show();
     }
-
 
     public static void selectInput(Point outputPoint){
         final Dialog dialog = new Dialog(context);
