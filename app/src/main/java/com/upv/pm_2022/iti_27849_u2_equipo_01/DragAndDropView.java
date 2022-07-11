@@ -6,6 +6,7 @@
 package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,6 +14,7 @@ import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -63,13 +65,17 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 	@Override
 	public void onDraw(Canvas canvas) {
 		canvas.drawColor(Color.WHITE);
-		for(Figure figure : figures) {
-			figure.draw(canvas);
-			for(Figure point : figure.getPoints())
-				point.draw(canvas);
-		}
-		for (Figure line : lines){
-			line.draw(canvas);
+		try {
+			for (Figure figure : figures) {
+				figure.draw(canvas);
+				for (Figure point : figure.getPoints())
+					point.draw(canvas);
+			}
+			for (Figure line : lines) {
+				line.draw(canvas);
+			}
+		} catch (ConcurrentModificationException e){
+			System.out.println("Ocurrio un problema al agregar el elemento");
 		}
 	}
 	
