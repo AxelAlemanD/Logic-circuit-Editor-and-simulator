@@ -64,8 +64,9 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 	 */
 	@Override
 	public void onDraw(Canvas canvas) {
-		canvas.drawColor(Color.WHITE);
+//		canvas.drawColor(Color.WHITE);
 		try {
+			canvas.drawColor(Color.WHITE);
 			for (Figure figure : figures) {
 				figure.draw(canvas);
 				for (Figure point : figure.getPoints())
@@ -76,6 +77,8 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 			}
 		} catch (ConcurrentModificationException e){
 			System.out.println("Ocurrio un problema al agregar el elemento");
+		} catch (NullPointerException e){
+			System.out.println("Ocurrio un problema");
 		}
 	}
 	
