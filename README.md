@@ -1,4 +1,5 @@
 <div align="center">
+<img src="https://user-images.githubusercontent.com/56330832/178573000-8d74f578-27ec-4fae-97db-c7856234d265.png" width="12%">
   <h1>Logic circuit: Editor and simulator</h1>
   
   <br>  

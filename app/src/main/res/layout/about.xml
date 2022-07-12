@@ -25,7 +25,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/ic_launcher" />
+        app:srcCompat="@drawable/icon" />
 
     <TextView
         android:layout_width="wrap_content"
