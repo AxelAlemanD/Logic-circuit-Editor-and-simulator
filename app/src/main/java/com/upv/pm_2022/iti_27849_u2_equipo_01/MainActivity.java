@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intentGenerateGraphService;
     private static ArrayList<Point> points;
     public static ArrayList<Entry> outputValues;
+    OutputGraphDialog outputGraphDialog;
 
     Figure gate;
 
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void enableOrDisableButtons(Boolean status){
         ((FloatingActionButton) findViewById(R.id.clearDisplayBtn)).setEnabled(!status);
-        ((FloatingActionButton) findViewById(R.id.showGraphBtn)).setEnabled(!status);
+//        ((FloatingActionButton) findViewById(R.id.showGraphBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addAndGateBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addNandGateBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addNorGateBtn)).setEnabled(!status);
@@ -165,26 +166,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showOutputGraph(View view){
-        final Dialog dialog = new Dialog(context);
-        dialog.setCancelable(true);
-        dialog.setContentView(R.layout.activity_circuit_output_graph);
-        LineChart outputChart = dialog.findViewById(R.id.outputChart);
-
-        LineDataSet lineDataSet = new LineDataSet(outputValues, "output");
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(lineDataSet);
-
-        LineData data = new LineData(dataSets);
-        outputChart.setData(data);
-        outputChart.invalidate();
-
-        // Customize chart
-        outputChart.getAxisLeft().setDrawGridLines(false);
-        outputChart.getXAxis().setDrawGridLines(false);
-        lineDataSet.setColor(Color.BLUE);
-        lineDataSet.setDrawCircles(false);
-
-        dialog.show();
+        outputGraphDialog = new OutputGraphDialog(this);
+        outputGraphDialog.show();
     }
 
     public static void selectInput(Point outputPoint){
