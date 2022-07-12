@@ -4,14 +4,9 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.Handler;
 
-import com.github.mikephil.charting.data.Entry;
-
 public class SimulationService extends IntentService {
 
     private Handler mHandler;
-//    private int xAxies = -1;
-//    private Boolean tempValue = false;
-//    private int count = 0;
 
     public SimulationService() {
         super("SimulationService");
@@ -37,13 +32,6 @@ public class SimulationService extends IntentService {
                     }
                 });
             }
-//            count++;
-//            if(count == 1000) {
-//                tempValue = DragAndDropView.figures.get(DragAndDropView.figures.size() - 1).getOutput();
-//                MainActivity.outputValues.add(new Entry(xAxies++, (tempValue) ? 1 : 0 ));
-//                MainActivity.outputValues.add(new Entry(xAxies, (tempValue) ? 1 : 0 ));
-//                count = 0;
-//            }
         }
         this.stopSelf();
     }

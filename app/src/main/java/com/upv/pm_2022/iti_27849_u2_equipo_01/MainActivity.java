@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -41,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayAdapter<Point> adapter;
     private int gate_id = 0;
     private int point_id = 0;
+    public static int xAxiesGraph = -1;
+    public static int sampleRate = 5;
     public static Boolean is_running = false;
     private Intent intentSimulationService;
     private Intent intentGenerateGraphService;
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.clear();
         DragAndDropView.lines.clear();
         outputValues.clear();
+        xAxiesGraph = -1;
         this.gate_id = 0;
         this.point_id = 0;
     }
@@ -248,12 +249,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.settings:
+                showSettings();
+                return true;
             case R.id.about:
                 showDialogAbout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void showSettings(){
+        Dialog dialog = new Dialog(context);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.settings);
+        dialog.setTitle("Settings");
+        EditText sampleRateEt = dialog.findViewById(R.id.sampleRate);
+        sampleRateEt.setText(String.valueOf(sampleRate));
+        dialog.show();
+
+        dialog.findViewById(R.id.saveBtn).setOnClickListener(v -> {
+            int newSampleRate = Integer.parseInt(sampleRateEt.getText().toString());
+            if(newSampleRate > 0)
+                sampleRate = newSampleRate;
+            dialog.dismiss();
+        });
+
+        dialog.findViewById(R.id.cancelBtn).setOnClickListener(v ->
+                dialog.dismiss()
+        );
     }
 
     private void showDialogAbout(){
