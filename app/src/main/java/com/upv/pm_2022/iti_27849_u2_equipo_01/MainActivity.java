@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<Point> points;
     public static ArrayList<Entry> outputValues;
     OutputGraphDialog outputGraphDialog;
+    SettingsDialog settingsDialog;
 
     Figure gate;
 
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         ((LinearLayout) findViewById(R.id.content)).addView(new DragAndDropView(this));
 
         outputValues = new ArrayList<>();
+
+        settingsDialog = new SettingsDialog(this);
     }
 
     public void addAndGate(View view){
@@ -244,24 +247,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSettings(){
-        Dialog dialog = new Dialog(context);
-        dialog.setCancelable(true);
-        dialog.setContentView(R.layout.settings);
-        dialog.setTitle("Settings");
-        EditText sampleRateEt = dialog.findViewById(R.id.sampleRate);
-        sampleRateEt.setText(String.valueOf(sampleRate));
-        dialog.show();
-
-        dialog.findViewById(R.id.saveBtn).setOnClickListener(v -> {
-            int newSampleRate = Integer.parseInt(sampleRateEt.getText().toString());
-            if(newSampleRate > 0)
-                sampleRate = newSampleRate;
-            dialog.dismiss();
-        });
-
-        dialog.findViewById(R.id.cancelBtn).setOnClickListener(v ->
-                dialog.dismiss()
-        );
+        settingsDialog.show();
     }
 
     private void showDialogAbout(){
