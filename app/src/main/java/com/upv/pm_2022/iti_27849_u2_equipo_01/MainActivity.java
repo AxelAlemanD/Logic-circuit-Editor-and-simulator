@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +15,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
@@ -31,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private int point_id = 0;
     public static Boolean is_running = false;
     private Intent intentSimulationService;
+    private Intent intentGenerateGraphService;
+    private static ArrayList<Point> points;
+    public static ArrayList<Entry> outputValues;
+
     Figure gate;
 
     @Override
@@ -41,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         // want fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ((LinearLayout) findViewById(R.id.content)).addView(new DragAndDropView(this));
+
+        outputValues = new ArrayList<>();
     }
 
     public void addAndGate(View view){
@@ -112,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
             ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
             intentSimulationService = new Intent(this, SimulationService.class);
             startService(intentSimulationService);
+            intentGenerateGraphService = new Intent(this, GenerateGraphService.class);
+            startService(intentGenerateGraphService);
             is_running = true;
             enableOrDisableButtons(is_running);
         }
@@ -127,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(context, "Clean display", Toast.LENGTH_SHORT).show();
         DragAndDropView.figures.clear();
         DragAndDropView.lines.clear();
+        outputValues.clear();
         this.gate_id = 0;
         this.point_id = 0;
     }
@@ -142,6 +159,29 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.addSwitchControlBtn)).setEnabled(!status);
     }
 
+    public void showOutputGraph(View view){
+        final Dialog dialog = new Dialog(context);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.activity_circuit_output_graph);
+        LineChart outputChart = dialog.findViewById(R.id.outputChart);
+
+        LineDataSet lineDataSet = new LineDataSet(outputValues, "output");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
+
+        LineData data = new LineData(dataSets);
+        outputChart.setData(data);
+        outputChart.invalidate();
+
+        // Customize chart
+        outputChart.getAxisLeft().setDrawGridLines(false);
+        outputChart.getXAxis().setDrawGridLines(false);
+        lineDataSet.setColor(Color.BLUE);
+        lineDataSet.setDrawCircles(false);
+
+        dialog.show();
+    }
+
     public static void selectInput(Point outputPoint){
         final Dialog dialog = new Dialog(context);
         dialog.setCancelable(true);
@@ -150,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) dialog.findViewById(R.id.outputPoint)).setText(outputPoint.toString());
         dialog.findViewById(R.id.outputPoint).setEnabled(false);
 
-        ArrayList<Point> points = new ArrayList<Point>();
+        points = new ArrayList<Point>();
         // Get all points
         for (Figure figure: DragAndDropView.figures){
             for (Figure point: figure.getPoints()) {
@@ -186,11 +226,11 @@ public class MainActivity extends AppCompatActivity {
 
             DragAndDropView.lines.add(conectionLine);
 
-            dialog.hide();
+            dialog.dismiss();
         });
 
         dialog.findViewById(R.id.cancelBtn).setOnClickListener(v ->
-            dialog.hide()
+            dialog.dismiss()
         );
     }
 }

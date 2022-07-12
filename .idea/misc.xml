@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/shape.xml" value="0.195" />
+        <entry key="app/src/main/res/layout/activity_circuit_output_graph.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2230259192284509" />
         <entry key="app/src/main/res/layout/select_point.xml" value="0.19270833333333334" />
       </map>

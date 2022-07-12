@@ -39,7 +39,7 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:layout_margin="-10dp"
+                        android:layout_marginTop="10dp"
                         android:background="#333333"
                         android:gravity="center_vertical"
                         android:text="Input gates"
@@ -169,6 +169,17 @@
         android:orientation="vertical">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/showGraphBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="showOutputGraph"
+            app:backgroundTint="#F6F4F4"
+            app:srcCompat="@drawable/outline_show_chart_black_24dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/clearDisplayBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -180,13 +191,13 @@
             app:srcCompat="@drawable/outline_cleaning_services_black_24dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/startSimulation"
+            android:id="@+id/startSimulationBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="35dp"
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="startSimulation"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
     </LinearLayout>
 </LinearLayout>
