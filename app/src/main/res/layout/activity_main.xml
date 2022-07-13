@@ -124,28 +124,6 @@
                         android:text="Switch"
                         android:textColor="#333333" />
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="-10dp"
-                        android:background="#333333"
-                        android:gravity="center_vertical"
-                        android:text="Output controls"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/addOutputControlBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#00FFFFFF"
-                        android:drawableTop="@drawable/logic_state_nor"
-                        android:onClick="addOutputControl"
-                        android:stateListAnimator="@null"
-                        android:text="Output"
-                        android:textColor="#333333" />
-
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

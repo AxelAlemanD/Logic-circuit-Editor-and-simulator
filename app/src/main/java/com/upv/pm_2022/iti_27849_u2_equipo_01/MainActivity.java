@@ -114,15 +114,6 @@ public class MainActivity extends AppCompatActivity {
         showMessageElementAdded();
     }
 
-    public void addOutputControl(View view){
-//        gate = new OutputControl(gate_id++,800,500);
-//        DragAndDropView.figures.add(gate);
-//
-//        allPoints.add((Point) gate.otherDoorPoints.get(0));
-//
-//        showMessageElementAdded();
-    }
-
     public void showMessageElementAdded(){
         Toast.makeText(getApplicationContext(),
                 this.gate.name + " added",
