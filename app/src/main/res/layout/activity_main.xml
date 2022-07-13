@@ -124,6 +124,17 @@
                         android:text="Switch"
                         android:textColor="#333333" />
 
+                    <Button
+                        android:id="@+id/addClockControlBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:drawableTop="@drawable/clock_control"
+                        android:onClick="addClockControl"
+                        android:stateListAnimator="@null"
+                        android:text="Clock"
+                        android:textColor="#333333" />
+
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

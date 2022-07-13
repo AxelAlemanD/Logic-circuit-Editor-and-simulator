@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intentGenerateGraphService;
     private OutputGraphDialog outputGraphDialog;
     private SettingsDialog settingsDialog;
+    private ClockDurationDialog clockDurationDialog;
     private Figure gate;
 
     @Override
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         outputValues = new ArrayList<>();
 
         settingsDialog = new SettingsDialog(this);
+        clockDurationDialog = new ClockDurationDialog(this);
     }
 
     public void addAndGate(View view){
@@ -111,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
         gate = new SwitchControl(gate_id++,800,500);
         DragAndDropView.figures.add(gate);
         allPoints.add(new Point(point_id++, "A", "output",900, 553, 10, gate));
+        showMessageElementAdded();
+    }
+
+    public void addClockControl(View view){
+        gate = new ClockControl(gate_id++,800,500);
+        DragAndDropView.figures.add(gate);
+        allPoints.add(new Point(point_id++, "A", "output",915, 533, 10, gate));
+        showDefineClockDurationDialog((ClockControl) gate);
         showMessageElementAdded();
     }
 
@@ -242,5 +253,10 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void showDefineClockDurationDialog(ClockControl clockControl){
+        clockDurationDialog.newClock = clockControl;
+        clockDurationDialog.show();
     }
 }
