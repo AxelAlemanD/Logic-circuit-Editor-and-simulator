@@ -118,7 +118,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#00FFFFFF"
-                        android:drawableTop="@drawable/logic_state_nor"
+                        android:drawableTop="@drawable/switch_gate"
                         android:onClick="addSwitchControl"
                         android:stateListAnimator="@null"
                         android:text="Switch"
