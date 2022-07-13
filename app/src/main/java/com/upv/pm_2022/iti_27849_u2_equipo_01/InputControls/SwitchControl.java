@@ -4,11 +4,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SwitchControl extends Figure {
 
@@ -20,20 +24,18 @@ public class SwitchControl extends Figure {
         this.yAxies = y;
         this.width = 50;
         this.name = "SWITCH " + this.id;
-        this.points = new ArrayList<Figure>();
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.DKGRAY);
-//        paint.setStyle(Paint.Style.STROKE); // Figura solo con borde
         paint.setStyle(Paint.Style.FILL); // Figura solida
-//        paint.setStrokeWidth(3f);
     }
 
     /**
      * Draw the figure
      * @param canvas
      */
+    @Override
     public void draw(Canvas canvas){
         Path path = new Path();
         /**
@@ -103,12 +105,14 @@ public class SwitchControl extends Figure {
      * @param touchY position of the tap on the Y axis
      * @return id
      */
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public int onDown(int touchX, int touchY){
         if(touchX > this.xAxies && touchX < this.xAxies +this.width &&
                 touchY > this.yAxies && touchY < this.yAxies +this.height) {
 
             this.is_active = !is_active;
-            ((Point) this.points.get(0)).status = this.is_active;
+            Point.getGatePoints(this).get(0).status = this.is_active;
             this.activate();
 
             return this.id;
@@ -121,22 +125,22 @@ public class SwitchControl extends Figure {
      * @param touchX position of the tap on the X axis
      * @param touchY position of the tap on the Y axis
      */
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onMove(int touchX, int touchY){
         this.xAxies = touchX - this.width /2;
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points
-        for(Figure point : this.points){
-            ((Point) point).onMoveGate(this.xAxies, this.yAxies+300);
+        for(Point point : Point.getGatePoints(this)){
+            point.onMoveGate(this.xAxies, this.yAxies+300);
         }
     }
 
-    public void addPoint(Point point){
-        points.add(point);
-    }
-
-    public ArrayList<Figure> getPoints(){
-        return points;
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Point> getPoints(){
+        return Point.getGatePoints(this);
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OutputControl extends Figure {
 
@@ -18,7 +19,7 @@ public class OutputControl extends Figure {
         this.yAxies = y;
         this.width = 50;
         this.name = "SWITCH " + this.id;
-        this.points = new ArrayList<Figure>();
+//        this.points = new ArrayList<Figure>();
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -126,12 +127,8 @@ public class OutputControl extends Figure {
 //        }
     }
 
-    public void addPoint(Point point){
-        points.add(point);
-    }
-
-    public ArrayList<Figure> getPoints(){
-        return points;
-    }
+//    public List<Point> getPoints(){
+//        return points;
+//    }
 }
 

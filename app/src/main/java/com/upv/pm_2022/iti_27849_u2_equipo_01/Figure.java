@@ -8,8 +8,12 @@ package com.upv.pm_2022.iti_27849_u2_equipo_01;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Figure {
 
@@ -20,7 +24,6 @@ public abstract class Figure {
 	protected int height = 100;
 	protected Paint paint;
 	protected String name;
-	protected ArrayList<Figure> points;
 
 	public void draw(Canvas canvas){ }
 
@@ -30,9 +33,8 @@ public abstract class Figure {
 
 	public void onMove(int touchX, int touchY){ }
 
-	public void addPoint(Point point){	}
-
-	public ArrayList<Figure> getPoints(){ return points; }
+	@RequiresApi(api = Build.VERSION_CODES.N)
+	public List<Point> getPoints(){ return Point.getGatePoints(this); }
 
 	public Boolean getOutput(){ return true; }
 

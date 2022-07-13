@@ -8,13 +8,11 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AndGate extends Figure {
 
@@ -24,7 +22,6 @@ public class AndGate extends Figure {
         this.xAxies = x;
         this.yAxies = y;
         this.name = "AND " + this.id;
-        this.points = new ArrayList<Figure>();
 
         this.paint = new Paint();
         paint.setAntiAlias(true);
@@ -36,6 +33,7 @@ public class AndGate extends Figure {
      * Draw the figure
      * @param canvas
      */
+    @Override
     public void draw(Canvas canvas){
         Path path = new Path();
         /**
@@ -148,6 +146,7 @@ public class AndGate extends Figure {
      * @param touchY position of the tap on the Y axis
      * @return id
      */
+    @Override
     public int onDown(int touchX, int touchY){
         if(touchX > this.xAxies && touchX < this.xAxies +this.width &&
                 touchY > this.yAxies && touchY < this.yAxies +this.height)
@@ -160,30 +159,34 @@ public class AndGate extends Figure {
      * @param touchX position of the tap on the X axis
      * @param touchY position of the tap on the Y axis
      */
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onMove(int touchX, int touchY){
         this.xAxies = touchX - this.width /2;
         this.yAxies = touchY - this.height /2;
 
         // Update position of the points
-        for(Figure point : this.points){
-            ((Point) point).onMoveGate(this.xAxies, this.yAxies-100);
+        for(Point point : Point.getGatePoints(this)){
+            point.onMoveGate(this.xAxies, this.yAxies-100);
         }
     }
 
-    public void addPoint(Point point){
-        points.add(point);
-    }
-
-    public ArrayList<Figure> getPoints(){
-        return points;
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Point> getPoints(){
+        return Point.getGatePoints(this);
     }
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public Boolean getOutput() {
-        ((Point) this.points.get(0)).status = ((Point) this.points.get(1)).connectedPoint.status
-                                               && ((Point) this.points.get(2)).connectedPoint.status;
+        ArrayList<Point> points = new ArrayList<>();
+        points.addAll(Point.getGatePoints(this));
 
-        return ((Point) this.points.get(0)).status;
+        points.get(0).status = points.get(1).connectedPoint.status
+                                               && points.get(2).connectedPoint.status;
+
+        return points.get(0).status;
     }
 }
 

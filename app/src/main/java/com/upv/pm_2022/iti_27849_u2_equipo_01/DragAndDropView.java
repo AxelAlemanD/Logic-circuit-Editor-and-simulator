@@ -67,14 +67,12 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 //		canvas.drawColor(Color.WHITE);
 		try {
 			canvas.drawColor(Color.WHITE);
-			for (Figure figure : figures) {
+			for (Figure figure : figures)
 				figure.draw(canvas);
-				for (Figure point : figure.getPoints())
-					point.draw(canvas);
-			}
-			for (Figure line : lines) {
+			for (Figure point : MainActivity.allPoints)
+				point.draw(canvas);
+			for (Figure line : lines)
 				line.draw(canvas);
-			}
 		} catch (ConcurrentModificationException e){
 			System.out.println("Ocurrio un problema al agregar el elemento");
 		} catch (NullPointerException e){
@@ -91,12 +89,12 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 
 			case MotionEvent.ACTION_DOWN:
 				for(Figure figure : figures) {
-					if(activeFigure == -1) {
+					if(activeFigure == -1)
 						activeFigure = figure.onDown(x, y);
-						for(Figure point : figure.getPoints())
-							point.onDown(x, y);
-					}
 				}
+				for(Figure point : MainActivity.allPoints)
+					if(activeFigure == -1)
+						point.onDown(x, y);
 				break;
 
 			case MotionEvent.ACTION_MOVE:
