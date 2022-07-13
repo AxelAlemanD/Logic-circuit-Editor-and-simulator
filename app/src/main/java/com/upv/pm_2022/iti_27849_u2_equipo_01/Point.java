@@ -101,6 +101,15 @@ public class Point extends Figure {
         ).collect(Collectors.toList());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static Figure getLastGateOfTheCircuit(){
+        return getOutputPoints().stream().filter(point ->
+                point.connectedPoint == null)
+                .collect(Collectors.toList())
+                .get(0)
+                .gate;
+    }
+
     private static boolean validatePoint(Point outputPoint, Point point){
         return point.getGate().id != outputPoint.getGate().id // Validate that it does not belong to the same door
                 && point.getType().equalsIgnoreCase("input") // Validate that it is of type Input

@@ -2,13 +2,16 @@ package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
+
+import androidx.annotation.RequiresApi;
+
 import com.github.mikephil.charting.data.Entry;
 
 public class GenerateGraphService extends IntentService {
 
     private Handler mHandler;
-//    private int xAxies = -1;
     private Boolean tempValue = false;
 
     public GenerateGraphService() {
@@ -22,12 +25,12 @@ public class GenerateGraphService extends IntentService {
     }
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onHandleIntent(Intent intent) {
         while(MainActivity.is_running) {
-            tempValue = DragAndDropView.figures.get(DragAndDropView.figures.size() - 1).getOutput();
+            tempValue = Point.getLastGateOfTheCircuit().getOutput();
             MainActivity.outputValues.add(new Entry(MainActivity.xAxiesGraph++, (tempValue) ? 1 : 0 ));
-//            MainActivity.outputValues.add(new Entry(xAxies, (tempValue) ? 1 : 0 ));
-
+            MainActivity.outputValues.add(new Entry(MainActivity.xAxiesGraph, (tempValue) ? 1 : 0 ));
             try {
                 Thread.sleep(MainActivity.sampleRate * 1000);
             } catch (InterruptedException e) {
