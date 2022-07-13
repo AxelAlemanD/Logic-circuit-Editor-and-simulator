@@ -1,4 +1,4 @@
-package com.upv.pm_2022.iti_27849_u2_equipo_01;
+package com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.R;
 
 public class ClockDurationDialog extends Dialog {
     public Activity activity;

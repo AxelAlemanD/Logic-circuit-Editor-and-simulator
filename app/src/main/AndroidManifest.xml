@@ -11,11 +11,11 @@
         android:theme="@style/Theme.Iti27849u2_equipo_01">
 
         <service
-            android:name=".GenerateGraphService"
+            android:name=".Services.GenerateGraphService"
             android:exported="false"/>
 
         <service
-            android:name=".SimulationService"
+            android:name=".Services.SimulationService"
             android:exported="false" />
 
         <activity

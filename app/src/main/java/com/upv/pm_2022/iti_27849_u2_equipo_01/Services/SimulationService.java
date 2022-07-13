@@ -1,4 +1,4 @@
-package com.upv.pm_2022.iti_27849_u2_equipo_01;
+package com.upv.pm_2022.iti_27849_u2_equipo_01.Services;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -7,7 +7,10 @@ import android.os.Handler;
 
 import androidx.annotation.RequiresApi;
 
+import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

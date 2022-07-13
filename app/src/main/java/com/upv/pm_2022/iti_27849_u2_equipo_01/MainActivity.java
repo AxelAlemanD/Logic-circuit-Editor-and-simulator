@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.ClockDurationDialog;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.OutputGraphDialog;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.SettingsDialog;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
@@ -29,6 +32,8 @@ import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Services.GenerateGraphService;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Services.SimulationService;
 
 import java.util.ArrayList;
 
