@@ -7,10 +7,12 @@ import android.os.Handler;
 
 import androidx.annotation.RequiresApi;
 
+import com.github.mikephil.charting.data.Entry;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.DragAndDropView;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.Figure;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
 import com.upv.pm_2022.iti_27849_u2_equipo_01.MainActivity;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,6 @@ import java.util.stream.Collectors;
 
 public class SimulationService extends IntentService {
     public static volatile boolean shouldContinue = true;
-
     private Handler mHandler;
 
     public SimulationService() {
@@ -46,7 +47,6 @@ public class SimulationService extends IntentService {
             for(Figure clock : clocks)
                 runClockControl(clock);
         }
-
         while(shouldContinue) {
             System.out.println(shouldContinue);
             for (Figure figure : gates) {

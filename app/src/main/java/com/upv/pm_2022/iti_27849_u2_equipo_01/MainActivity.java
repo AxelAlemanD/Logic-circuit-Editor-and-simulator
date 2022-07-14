@@ -47,11 +47,10 @@ public class MainActivity extends AppCompatActivity {
     public Boolean is_running = false;
     private static ArrayList<Point> otherDoorPoints;
     public static ArrayList<Point> allPoints = new ArrayList<>();
-    public static ArrayList<Entry> outputValues;
     private static ArrayAdapter<Point> adapter;
     private Intent intentSimulationService;
     private Intent intentGenerateGraphService;
-    private OutputGraphDialog outputGraphDialog;
+    public static OutputGraphDialog outputGraphDialog;
     private SettingsDialog settingsDialog;
     private ClockDurationDialog clockDurationDialog;
     private Figure gate;
@@ -65,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ((LinearLayout) findViewById(R.id.content)).addView(new DragAndDropView(this));
 
-        outputValues = new ArrayList<>();
-
         settingsDialog = new SettingsDialog(this);
         clockDurationDialog = new ClockDurationDialog(this);
+        outputGraphDialog = new OutputGraphDialog(this);
+        outputGraphDialog.show();
+        outputGraphDialog.hide();
     }
 
     public void addAndGate(View view){
@@ -163,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
         DragAndDropView.figures.clear();
         DragAndDropView.lines.clear();
         allPoints.clear();
-        outputValues.clear();
         xAxiesGraph = -1;
         this.gate_id = 0;
         this.point_id = 0;
@@ -180,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showOutputGraph(View view){
-        outputGraphDialog = new OutputGraphDialog(this);
         outputGraphDialog.show();
     }
 
