@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private int point_id = 0;
     public static int xAxiesGraph = -1;
     public static int sampleRate = 5;
-    public static Boolean is_running = false;
+    public Boolean is_running = false;
     private static ArrayList<Point> otherDoorPoints;
     public static ArrayList<Point> allPoints = new ArrayList<>();
     public static ArrayList<Entry> outputValues;
@@ -140,19 +140,22 @@ public class MainActivity extends AppCompatActivity {
         if(!is_running){
             Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
             ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
+            SimulationService.shouldContinue = true;
+            GenerateGraphService.shouldContinue = true;
             intentSimulationService = new Intent(this, SimulationService.class);
-            startService(intentSimulationService);
             intentGenerateGraphService = new Intent(this, GenerateGraphService.class);
+            startService(intentSimulationService);
             startService(intentGenerateGraphService);
-            is_running = true;
-            enableOrDisableButtons(is_running);
         }
         else {
             Toast.makeText(context, "Stop simulation", Toast.LENGTH_SHORT).show();
             ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_play_arrow_24);
-            is_running = false;
-            enableOrDisableButtons(is_running);
+
+            SimulationService.shouldContinue = false;
+            GenerateGraphService.shouldContinue = false;
         }
+        is_running = !is_running;
+        enableOrDisableButtons(is_running);
     }
 
     public void cleanDisplay(View view){
@@ -168,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void enableOrDisableButtons(Boolean status){
         ((FloatingActionButton) findViewById(R.id.clearDisplayBtn)).setEnabled(!status);
-        ((FloatingActionButton) findViewById(R.id.showGraphBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addAndGateBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addNandGateBtn)).setEnabled(!status);
         ((Button) findViewById(R.id.addNorGateBtn)).setEnabled(!status);

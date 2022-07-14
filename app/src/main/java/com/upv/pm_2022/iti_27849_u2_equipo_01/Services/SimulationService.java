@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SimulationService extends IntentService {
+    public static volatile boolean shouldContinue = true;
 
     private Handler mHandler;
 
@@ -46,7 +47,8 @@ public class SimulationService extends IntentService {
                 runClockControl(clock);
         }
 
-        while(MainActivity.is_running) {
+        while(shouldContinue) {
+            System.out.println(shouldContinue);
             for (Figure figure : gates) {
                 mHandler.post(new Runnable() {
                     @Override
@@ -67,7 +69,7 @@ public class SimulationService extends IntentService {
                 new Runnable() {
                     @Override
                     public void run() {
-                        while(MainActivity.is_running) {
+                        while(shouldContinue) {
                             try {
                                 Thread.sleep(((ClockControl) clock).duration * 1000);
                                 clock.getOutput();

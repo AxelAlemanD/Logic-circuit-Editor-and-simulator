@@ -15,6 +15,7 @@ public class GenerateGraphService extends IntentService {
 
     private Handler mHandler;
     private Boolean tempValue = false;
+    public static volatile boolean shouldContinue = true;
 
     public GenerateGraphService() {
         super("GenerateGraphService");
@@ -29,7 +30,7 @@ public class GenerateGraphService extends IntentService {
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onHandleIntent(Intent intent) {
-        while(MainActivity.is_running) {
+        while(shouldContinue) {
             tempValue = Point.getLastGateOfTheCircuit().getOutput();
             MainActivity.outputValues.add(new Entry(MainActivity.xAxiesGraph++, (tempValue) ? 1 : 0 ));
             MainActivity.outputValues.add(new Entry(MainActivity.xAxiesGraph, (tempValue) ? 1 : 0 ));
