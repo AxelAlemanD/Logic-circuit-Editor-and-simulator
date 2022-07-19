@@ -38,10 +38,10 @@
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="#333333"
-                        android:gravity="center_vertical"
+                        android:textAlignment="center"
                         android:text="Input gates"
                         android:textColor="#ffffff"
                         android:textStyle="bold" />
@@ -104,11 +104,11 @@
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="-10dp"
                         android:background="#333333"
-                        android:gravity="center_vertical"
+                        android:textAlignment="center"
                         android:text="Input controls"
                         android:textColor="#ffffff"
                         android:textStyle="bold" />
