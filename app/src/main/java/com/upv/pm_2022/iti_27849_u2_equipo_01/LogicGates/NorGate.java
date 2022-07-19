@@ -149,8 +149,12 @@ public class NorGate extends Figure {
         ArrayList<Point> points = new ArrayList<>();
         points.addAll(Point.getGatePoints(this));
 
-        points.get(0).status = !(points.get(1).connectedPoint.status
-                || points.get(2).connectedPoint.status);
+        try {
+            points.get(0).status = !(points.get(1).connectedPoint.status
+                    || points.get(2).connectedPoint.status);
+        } catch(NullPointerException e){
+            points.get(0).status = false;
+        }
 
         return points.get(0).status;
     }
