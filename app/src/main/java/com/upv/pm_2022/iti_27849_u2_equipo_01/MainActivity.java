@@ -123,23 +123,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startSimulation(View view){
-        if(!is_running){
-            Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
-            ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
-            SimulationService.shouldContinue = true;
-            GenerateGraphService.shouldContinue = true;
-            startService(new Intent(this, SimulationService.class));
-            startService(new Intent(this, GenerateGraphService.class));
-        }
-        else {
-            Toast.makeText(context, "Stop simulation", Toast.LENGTH_SHORT).show();
-            ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_play_arrow_24);
+        if(DragAndDropView.figures.size() > 0) {
+            if (!is_running) {
+                Toast.makeText(context, "Start simulation", Toast.LENGTH_SHORT).show();
+                ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
+                SimulationService.shouldContinue = true;
+                GenerateGraphService.shouldContinue = true;
+                startService(new Intent(this, SimulationService.class));
+                startService(new Intent(this, GenerateGraphService.class));
+            } else {
+                Toast.makeText(context, "Stop simulation", Toast.LENGTH_SHORT).show();
+                ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_play_arrow_24);
 
-            SimulationService.shouldContinue = false;
-            GenerateGraphService.shouldContinue = false;
+                SimulationService.shouldContinue = false;
+                GenerateGraphService.shouldContinue = false;
+            }
+            is_running = !is_running;
+            enableOrDisableButtons(is_running);
+        } else{
+            Toast.makeText(context, "Add at least one logic gate to the circuit", Toast.LENGTH_SHORT).show();
         }
-        is_running = !is_running;
-        enableOrDisableButtons(is_running);
     }
 
     public void cleanDisplay(View view){
