@@ -1,8 +1,5 @@
 package com.upv.pm_2022.iti_27849_u2_equipo_01;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,27 +11,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.github.mikephil.charting.data.Entry;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.ClockDurationDialog;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.OutputGraphDialog;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.SettingsDialog;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.ClockControl;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.SwitchControl;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.AndGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NandGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NorGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.NotGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.OrGate;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.Services.GenerateGraphService;
-import com.upv.pm_2022.iti_27849_u2_equipo_01.Services.SimulationService;
-
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Dialogs.*;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.InputControls.*;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.LogicGates.*;
+import com.upv.pm_2022.iti_27849_u2_equipo_01.Services.*;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<Point> otherDoorPoints;
     public static ArrayList<Point> allPoints = new ArrayList<>();
     private static ArrayAdapter<Point> adapter;
-    private Intent intentSimulationService;
-    private Intent intentGenerateGraphService;
     public static OutputGraphDialog outputGraphDialog;
     private SettingsDialog settingsDialog;
     private ClockDurationDialog clockDurationDialog;
@@ -142,10 +128,8 @@ public class MainActivity extends AppCompatActivity {
             ((FloatingActionButton) findViewById(R.id.startSimulationBtn)).setImageResource(R.drawable.ic_baseline_pause_24);
             SimulationService.shouldContinue = true;
             GenerateGraphService.shouldContinue = true;
-            intentSimulationService = new Intent(this, SimulationService.class);
-            intentGenerateGraphService = new Intent(this, GenerateGraphService.class);
-            startService(intentSimulationService);
-            startService(intentGenerateGraphService);
+            startService(new Intent(this, SimulationService.class));
+            startService(new Intent(this, GenerateGraphService.class));
         }
         else {
             Toast.makeText(context, "Stop simulation", Toast.LENGTH_SHORT).show();
@@ -160,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void cleanDisplay(View view){
         Toast.makeText(context, "Clean display", Toast.LENGTH_SHORT).show();
+        outputGraphDialog = new OutputGraphDialog(this);
+        outputGraphDialog.show();
+        outputGraphDialog.hide();
         DragAndDropView.figures.clear();
         DragAndDropView.lines.clear();
         allPoints.clear();
@@ -169,13 +156,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void enableOrDisableButtons(Boolean status){
-        ((FloatingActionButton) findViewById(R.id.clearDisplayBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addAndGateBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addNandGateBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addNorGateBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addNotGateBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addOrGateBtn)).setEnabled(!status);
-        ((Button) findViewById(R.id.addSwitchControlBtn)).setEnabled(!status);
+        findViewById(R.id.clearDisplayBtn).setEnabled(!status);
+        findViewById(R.id.addAndGateBtn).setEnabled(!status);
+        findViewById(R.id.addNandGateBtn).setEnabled(!status);
+        findViewById(R.id.addNorGateBtn).setEnabled(!status);
+        findViewById(R.id.addNotGateBtn).setEnabled(!status);
+        findViewById(R.id.addOrGateBtn).setEnabled(!status);
+        findViewById(R.id.addSwitchControlBtn).setEnabled(!status);
     }
 
     public void showOutputGraph(View view){
